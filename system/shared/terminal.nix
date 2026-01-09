@@ -39,16 +39,21 @@
 		&& config.programs.gnupg.agent.enable
 	);
 
-	environment.systemPackages = with pkgs; [
-		ripgrep fastfetch onefetch tree gcc tree-sitter
-		fastfetch fzf figlet zip unzip wget yt-dlp btop
-		gh cmatrix browsh imagemagick superfile gnumake
-		pandoc typst gnupg lynx ffmpeg-full texliveFull
-		bitwarden-cli ocrmypdf cava zbar glow
-	]
+	environment = {
+		systemPackages = with pkgs; [
+			ripgrep fastfetch onefetch tree gcc tree-sitter
+			fastfetch fzf figlet zip unzip wget yt-dlp btop
+			gh cmatrix browsh imagemagick superfile gnumake
+			pandoc typst gnupg lynx ffmpeg-full texliveFull
+			bitwarden-cli ocrmypdf cava zbar glow
+		]
 
-	++ lib.optionals host.desktop
-		[ wl-clipboard ];
+		++ lib.optionals host.desktop
+			[ wl-clipboard ];
+
+		persistence."/persist".users.${host.user}.files = lib.mkIf config.programs.lazygit.enable
+			[ ".local/state/lazygit/state.yml" ];
+	};
 
 	# Doctor: Yes, I think it is terminal.
 }
