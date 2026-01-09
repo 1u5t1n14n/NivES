@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ pkgs, host, config, ... }:
 
 {
 
@@ -6,7 +6,8 @@
 		systemPackages = [ pkgs.ssh-to-age pkgs.sops ];
 		persistence."/persist" = {
 			directories = [ "/etc/ssh" ];
-			users.${host.user}.directories = [ ".local/share/keyrings" ];
+			files = [ "/etc/sops/age/keys.txt" ];
+			users.${host.user}.files = [ { file = ".config/sops/age/keys.txt"; mode = "700"; } ];
 		};
 	};
 
@@ -23,5 +24,13 @@
 		validateSopsFiles = true;
 	};
 	#TODO: Rest machn
+
+	system.userActivationScripts.ageKeys = ''
+		${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i /persist/etc/ssh/ssh_host_ed25519_key -o ${config.users.users.${host.user}.home}/.config/sops/age/keys.txt
+
+	'';
+
+	# Possibly irrelevant due to Impermanence (?)
+	# chown -R ${host.user}:${config.users.users.${host.user}.group} ${config.users.users.${host.user}.home}/.config/sops
 
 }
