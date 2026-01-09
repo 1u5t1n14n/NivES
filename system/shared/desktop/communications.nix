@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ pkgs, host, config, ... }:
 
 {
 
@@ -6,10 +6,6 @@
 		localsend = {
 			enable = true;
 			openFirewall = true;
-		};
-
-		chromium = {
-			enable = true;
 		};
 
 		thunderbird = {
@@ -27,7 +23,11 @@
 		systemPackages = with pkgs; [
 			bitwarden-desktop signal-desktop ente-auth ungoogled-chromium
 		];
-		persistence."/persist".users.${host.user}.directories = [ ".config/Bitwarden" ];
+
+		persistence."/persist".users.${host.user}.directories = [ ".config/Bitwarden" ]
+
+		++ lib.optionals config.programs.thunderbird.enable
+			[ ".thunderbird" ];
 	};
 
 }
