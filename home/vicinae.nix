@@ -3,7 +3,7 @@
 {
 
 	services.vicinae = {
-		enable = host.desktop;
+		enable = host.desktop && false;
 
 		systemd = {
 			enable = true;
