@@ -43,11 +43,12 @@ in
 								name = "luks";
 								type = "luks";
 								passwordFile = "/tmp/passwordfile";
-								additionalKeyFiles = [ "/tmp/keyfile" ];
 								settings = {
 									allowDiscards = true;
 									fallbackToPassword = true;
-									keyFile = "/dev/sda";
+
+									# Change during and after Installation
+									keyFile = lib.mkDefault "/dev/sdb";
 									keyFileSize = 4096;
 
 									# For SystemD
@@ -90,17 +91,11 @@ in
 						type = "zfs_fs";
 						options = mountOptions;
 						mountpoint = "/nix";
-						postCreateHook = lib.mkIf false ''
-							zfs snapshot zroot/nix@blank
-						'';
 					};
 					persist = {
 						type = "zfs_fs";
 						options = mountOptions;
 						mountpoint = "/persist";
-						postCreateHook = lib.mkIf false ''
-							zfs snapshot zroot/persist@blank
-						'';
 					};
 				};
 			};
