@@ -7,7 +7,7 @@
 		persistence."/persist" = {
 			directories = [ "/etc/ssh" ];
 			files = [ "/etc/sops/age/keys.txt" ];
-			users.${host.user}.files = [ { file = ".config/sops/age/keys.txt"; mode = "700"; } ];
+			users.${host.user}.directories = [ { directory = ".config/sops/age/"; mode = "700"; } ];
 		};
 	};
 

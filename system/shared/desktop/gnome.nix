@@ -66,7 +66,7 @@ in
 				&& config.programs.kdeconnect.package == pkgs.valent)
 			[ ".config/valent" ];
 
-		systemPackages = [ pkgs.ghostty ]
+		systemPackages = with pkgs; [ ghostty ]
 
 		++ lib.optionals (!config.services.gnome.core-apps.enable)
 			[	citations

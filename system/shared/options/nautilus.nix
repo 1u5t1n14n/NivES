@@ -18,7 +18,7 @@ in
 
 		services = {
 			gnome.sushi.enable = true;
-			gvfs.enable = !config.environment.persistence."/persist".enable;
+			gvfs.enable = lib.mkDefault true;
 		};
 
 		environment = {
