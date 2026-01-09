@@ -59,9 +59,14 @@ in
 
 	environment = {
 		persistence."/persist".users.${host.user}.directories = [
-			".config/valent"
-		];
-		systemPackages = with pkgs; [ ghostty ]
+			{ directory = ".local/share/keyrings"; mode = "700"; }
+		]
+
+		++ lib.optionals (config.programs.kdeconnect.enable
+				&& config.programs.kdeconnect.package == pkgs.valent)
+			[ ".config/valent" ];
+
+		systemPackages = [ pkgs.ghostty ]
 
 		++ lib.optionals (!config.services.gnome.core-apps.enable)
 			[	citations
@@ -78,7 +83,7 @@ in
 
 				baobab
 				decibels
-				epiphany
+				# epiphany
 				file-roller
 				gnome-calculator
 				gnome-characters
@@ -93,7 +98,8 @@ in
 		++ lib.optionals config.services.gnome.evolution-data-server.enable
 			[ gnome-calendar ]
 
-		++ lib.optionals (config.services.displayManager.autoLogin.enable && cfg.enable)
+		++ lib.optionals (config.services.displayManager.autoLogin.enable
+				&& cfg.enable)
 			[ gcr ]
 
 		# And GNOME Shell Extensions
