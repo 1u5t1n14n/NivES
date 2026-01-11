@@ -42,18 +42,8 @@ in
 							content = {
 								name = "luks";
 								type = "luks";
-								passwordFile = "/tmp/passwordfile";
-								settings = {
-									allowDiscards = true;
-									fallbackToPassword = true;
-
-									# Change during and after Installation
-									keyFile = lib.mkDefault "/dev/sdb";
-									keyFileSize = 4096;
-
-									# For SystemD
-									# keyFileTimeout = 2;
-								};
+								passwordFile = "/tmp/passwordFile";
+								settings.allowDiscards = true;
 								content = {
 									type = "zfs";
 									pool = "zroot";
