@@ -7,7 +7,7 @@
 	];
 
 	programs.niri = {
-		enable = osConfig.programs.niri.enable && false;
+		enable = osConfig.programs.niri.enable;
 		settings = {
 			input = {
 				keyboard = {
