@@ -72,6 +72,13 @@
 	in
 	{
 			nixosConfigurations = {
+				Hypnos = mkNixosConfig {
+					host = {
+						name = "Hypnos";
+						user = "1u5t1n14n";
+						desktop = false;
+					};
+				};
 				Morpheus = mkNixosConfig {
 					host = {
 						name = "Morpheus";
