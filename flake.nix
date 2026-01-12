@@ -76,7 +76,7 @@
 					host = {
 						name = "Hypnos";
 						user = "1u5t1n14n";
-						desktop = false;
+						desktop = true;
 					};
 				};
 				Morpheus = mkNixosConfig {
