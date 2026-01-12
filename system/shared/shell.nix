@@ -20,7 +20,7 @@
 
 	users.defaultUserShell = config.users.users.${host.user}.shell;
 	environment = {
-		persistence."/persist".users.${host.user}.files = [ ".zshHistory" ];
+		# persistence."/persist".users.${host.user}.files = [ ".zshHistory" ];
 		shells = [ config.users.users.${host.user}.shell ];
 		systemPackages = [ config.users.users.${host.user}.shell ];
 	};

@@ -75,7 +75,7 @@ in
 				gnome-podcasts
 				learn6502
 				morewaita-icon-theme
-				# papers
+				papers
 				pdfarranger
 				showtime
 				typesetter
