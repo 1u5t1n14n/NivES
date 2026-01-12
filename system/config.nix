@@ -7,7 +7,7 @@
 	]
 	++ lib.optionals host.desktop
 		[ ./shared/desktop ]
-	++ lib.optionals (!host.desktop && false)
+	++ lib.optionals (!host.desktop)
 		[ ./shared/server ];
 
 	environment.systemPackages = [ pkgs.home-manager ];
