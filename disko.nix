@@ -73,9 +73,6 @@ in
 						type = "zfs_fs";
 						options = mountOptions;
 						mountpoint = "/";
-						postCreateHook = lib.mkIf false ''
-							zfs snapshot zroot/root@blank
-						'';
 					};
 					nix = {
 						type = "zfs_fs";
