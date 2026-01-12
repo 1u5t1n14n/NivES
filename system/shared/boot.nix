@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let
+
+	# See <https://wiki.nixos.org/wiki/ZFS> for this wonderful snippet.
 	zfsCompatibleKernelPackages = lib.filterAttrs (
 		name: kernelPackages:
 			(builtins.match "linux_[0-9]+_[0-9]+" name) != null
@@ -16,9 +18,13 @@ let
 in
 {
 
+	# Secure Boot Setup
+	# Currently not working perfectly
+	# DO NOT RELY ON THIS.
 	environment = {
 		systemPackages = [ pkgs.sbctl ];
-		persistence."/persist".directories = [ config.boot.lanzaboote.pkiBundle ];
+		persistence."/persist".directories = lib.mkIf config.boot.lanzaboote.enable
+			[ config.boot.lanzaboote.pkiBundle ];
 	};
 
 	boot = {
@@ -45,7 +51,7 @@ in
 			'';
 		};
 
-		kernelParams = lib.mkIf false [
+		kernelParams = [
 			"quiet"
 			"splash"
 			"boot.shell_on_fail"
