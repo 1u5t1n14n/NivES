@@ -11,9 +11,9 @@
 			email = [ "<Alt>4" ];
 		};
 		"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-			name = "WezTerm";
+			name = "Alacritty";
 			binding = "<Alt>Return";
-			command = "wezterm";
+			command = "alacritty";
 		};
 		"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
 			name = "Vicinae";

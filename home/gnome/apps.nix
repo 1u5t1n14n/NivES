@@ -10,7 +10,7 @@
 		};
 		"org/gnome/shell" = {
 			favorite-apps = [
-				"org.wezfurlong.wezterm.desktop"
+				"Alacritty.desktop"
 				"firefox.desktop"
 				"org.gnome.Nautilus.desktop"
 				"thunderbird.desktop"

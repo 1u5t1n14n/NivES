@@ -16,7 +16,7 @@
 
 	xdg.terminal-exec = {
 		enable = true;
-		settings.default = [ "org.wezfurlong.wezterm.desktop" ];
+		settings.default = [ "Alacritty.desktop" ];
 	};
 
 	services.blueman.enable = config.hardware.bluetooth.enable;

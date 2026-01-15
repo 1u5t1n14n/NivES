@@ -19,7 +19,7 @@ in
 			repeat = false;
 		};
 		"${main}+Space".action = spawn "vicinae" "toggle";
-		"${main}+Return".action = spawn "wezterm";
+		"${main}+Return".action = spawn "alacritty";
 
 		"${main}+2".action = spawn "firefox";
 		"${main}+3".action = spawn "nautilus";
