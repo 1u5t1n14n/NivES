@@ -11,7 +11,7 @@
 		[ ./shared/server ];
 
 	environment.systemPackages = [ pkgs.home-manager ];
-	system.userActivationScripts.backupRemove = ''
+	system.activationScripts.backupRemove = ''
 		find ${config.users.users.${host.user}.home} -type f -name "*.hmBackup" -delete
 	'';
 
