@@ -4,19 +4,13 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
 	nixpkgs.hostPlatform = "x86_64-linux";
-
 	disko.devices.disk.main.device = "/dev/sda";
-
-	hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
+	hardware.enableAllFirmware = false;
 
 	boot = {
-		lanzaboote.enable = false;
-
 		initrd = {
 			availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "firewire_ohci" "usbhid" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" ];
 			kernelModules = [ ];
@@ -25,7 +19,6 @@
 		extraModulePackages = [ ];
 	};
 
-	networking.hostId = "8425e349";
 	environment.persistence."/persist".enable = true;
 
 	# Did you read the Comment?
