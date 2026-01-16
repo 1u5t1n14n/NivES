@@ -27,17 +27,17 @@ in
 			[ config.boot.lanzaboote.pkiBundle ];
 	};
 
+	systemd.services.generate-sb-keys = {
+		unitConfig.ConditionPathExists = lib.mkForce "!${config.boot.lanzaboote.pkiBundle}/keys";
+	};
+
 	boot = {
 		lanzaboote = {
 			pkiBundle = "/var/lib/sbctl";
 			autoGenerateKeys.enable = true;
 			autoEnrollKeys = {
 				enable = true;
-
-				# You will need to manually reboot
-				# the system to setup the secure
-				# boot keys.
-				autoReboot = false;
+				autoReboot = true;
 			};
 		};
 
