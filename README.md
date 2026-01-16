@@ -108,12 +108,7 @@ disabled by default. Then, simply add a new entry in `flake.nix`.
 }
 ```
 
-On lower-end machines I recommend collecting garbage before installing.
-
 Just hit `nixos-install` and sit back.
-
-> The installation process will be interrupted by the need to accept
-> DisplayLinks terms of service.
 
 ```bash
 nixos-install --root /mnt --flake .#<Your-Hostname>
