@@ -5,6 +5,7 @@
 	imports = [
 		./boot.nix
 		./fonts.nix
+		./hardware.nix
 		./locale.nix
 		./medium.nix
 		./networking.nix
