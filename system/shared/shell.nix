@@ -3,7 +3,7 @@
 {
 
 	programs.zsh = {
-		enable = lib.mkIf (config.users.users.${host.user}.shell == pkgs.zsh) true;
+		enable = true;
 
 		enableCompletion = true;
 		syntaxHighlighting.enable = true;
@@ -18,17 +18,11 @@
 		shellAliases = { };
 	};
 
-	users.defaultUserShell = config.users.users.${host.user}.shell;
+	users.defaultUserShell = lib.mkIf config.programs.zsh.enable pkgs.zsh;
 	environment = {
 		persistence."/persist".users.${host.user}.files = lib.mkIf config.programs.zsh.enable
-			[ ".zshHistory" ];
-		shells = [ config.users.users.${host.user}.shell ];
-		systemPackages = [ config.users.users.${host.user}.shell ];
+			[ ".zshHistory" ".zshrc" ];
+		shells = [ config.users.defaultUserShell ];
 	};
-
-	system.userActivationScripts.zsh = lib.mkIf config.programs.zsh.enable
-		''
-			touch .zshrc
-		'';
 
 }

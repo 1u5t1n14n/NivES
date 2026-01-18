@@ -18,7 +18,6 @@
 				extraGroups = [ "networkmanager" "wheel" ];
 
 				description = host.user;
-				shell = pkgs.zsh;
 				packages = with pkgs; [ ];
 			};
 		};
