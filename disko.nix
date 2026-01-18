@@ -61,7 +61,7 @@ in
 				rootFsOptions = {
 					compression = "zstd";
 					"com.sun:auto-snapshot" = builtins.toString false;
-					mountpoint = "none";
+					mountpoint = "/";
 				};
 				mountpoint = "/";
 				postCreateHook = ''
@@ -69,11 +69,6 @@ in
 				'';
 
 				datasets = {
-					root = {
-						type = "zfs_fs";
-						options = mountOptions;
-						mountpoint = "/";
-					};
 					nix = {
 						type = "zfs_fs";
 						options = mountOptions;
