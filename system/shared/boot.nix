@@ -27,8 +27,11 @@ in
 			[ config.boot.lanzaboote.pkiBundle ];
 	};
 
-	systemd.services.generate-sb-keys = {
-		unitConfig.ConditionPathExists = lib.mkForce "!${config.boot.lanzaboote.pkiBundle}/keys";
+	# Already on master, but not currently in flake
+	systemd.services = {
+		generate-sb-keys = {
+			unitConfig.ConditionPathExists = lib.mkForce "!${config.boot.lanzaboote.pkiBundle}/keys";
+		};
 	};
 
 	boot = {
@@ -43,31 +46,57 @@ in
 
 		kernelPackages = latestKernelPackage;
 
-		# consoleLogLevel = 3;
+		consoleLogLevel = 3;
 		initrd = {
-			# verbose = false;
-			postResumeCommands = lib.mkAfter ''
-				zfs rollback -r zroot@blank
-			'';
+			systemd = {
+				enable = true;
+				services.zfsRollback = lib.mkIf config.environment.persistence."/persist".enable {
+					description = "Roll back to a blank filesystem";
+
+					after = [ "cryptsetup.target" ];
+					wantedBy = [ "initrd.target" ];
+					before = [ "sysroot.mount" ];
+
+					unitConfig.DefaultDependencies = "no";
+					serviceConfig.type = "oneshot";
+
+					path = [ pkgs.zfs ];
+					script = ''
+						zfs rollback -r zroot@blank
+					'';
+				};
+			};
+			verbose = false;
+
+			postResumeCommands = lib.mkIf (!config.boot.initrd.systemd.enable && config.environment.persistence."/persist".enable)
+				''
+					zfs rollback -r zroot@blank
+				'';
 		};
 
 		kernelParams = [
-			"quiet"
-			"splash"
-			"boot.shell_on_fail"
 			"udev.log_priority=3"
 			"rd.systemd.show_status=auto"
+
+			"quiet"
+			"splash"
+
+			"boot.shell_on_fail"
+
 			"random.trust_cpu=off"
 		];
 
 		loader = {
-			# timeout = 0;
-			systemd-boot.enable = true;
+			grub = {
+				enable = !config.boot.lanzaboote.enable;
+				device = "nodev";
+				efiSupport = true;
+			};
 			efi.canTouchEfiVariables = true;
 		};
 
 		plymouth = {
-			enable = false;
+			enable = config.boot.initrd.systemd.enable;
 
 			theme = "square_hud";
 			themePackages = with pkgs; [(adi1090x-plymouth-themes.override {
