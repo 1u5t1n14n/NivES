@@ -68,7 +68,8 @@ in
 			};
 			verbose = false;
 
-			postResumeCommands = lib.mkIf (!config.boot.initrd.systemd.enable && config.environment.persistence."/persist".enable)
+			postResumeCommands = lib.mkIf (!config.boot.initrd.systemd.enable
+				&& config.environment.persistence."/persist".enable)
 				''
 					zfs rollback -r zroot@blank
 				'';
@@ -87,6 +88,7 @@ in
 		];
 
 		loader = {
+			systemd-boot.enable = false;
 			grub = {
 				enable = !config.boot.lanzaboote.enable;
 				device = "nodev";
