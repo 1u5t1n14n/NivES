@@ -72,9 +72,21 @@
 	in
 	{
 			nixosConfigurations = {
+				isoImage = nixpkgs.lib.nixosSystem {
+					system = "x86_64-linux";
+					modules = [ ./iso.nix ];
+				};
+
 				Hypnos = mkNixosConfig {
 					host = {
 						name = "Hypnos";
+						user = "1u5t1n14n";
+						desktop = true;
+					};
+				};
+				Thanatos = mkNixosConfig {
+					host = {
+						name = "Thanatos";
 						user = "1u5t1n14n";
 						desktop = true;
 					};
