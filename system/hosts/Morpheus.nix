@@ -1,8 +1,6 @@
-{ modulesPath, config, lib, ... }:
+{ lib, ... }:
 
 {
-
-	imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
 	nixpkgs.hostPlatform = "x86_64-linux";
 
