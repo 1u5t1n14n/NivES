@@ -3,7 +3,10 @@
 {
 
 	programs = {
-		niri.enable = true;
+		niri = {
+			enable = true;
+			package = pkgs.niri;
+		};
 		waybar.enable = true;
 	};
 
