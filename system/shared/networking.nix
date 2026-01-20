@@ -1,4 +1,4 @@
-{ host, lib, ... }:
+{ host, lib, config, ... }:
 
 {
 
@@ -11,11 +11,13 @@
 	
 		useDHCP = lib.mkDefault true;
 
-		networkmanager.enable = true;
+		networkmanager = {
+			enable = true;
+			wifi.scanRandMacAddress = true;
+		};
 	};
 
-	environment.persistence."/persist".directories = [
-		"/etc/NetworkManager/system-connections"
-	];
+	environment.persistence."/persist".directories = lib.mkIf config.networking.networkmanager.enable
+		[ "/etc/NetworkManager/system-connections" ];
 
 }
