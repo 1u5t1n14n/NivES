@@ -26,7 +26,7 @@
 		};
 
 		fail2ban = {
-			enable = config.services.openssh.enable;
+			enable = true;
 			maxretry = 5;
 			bantime = "2h";
 

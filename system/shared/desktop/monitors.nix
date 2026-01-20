@@ -13,7 +13,6 @@
 		'';
 	};
 
-	# GNOME
 	environment.systemPackages = [ pkgs.xorg.xrandr ]
 
 	++ lib.optionals config.nixpkgs.config.allowUnfree
@@ -23,6 +22,7 @@
 		extraModulePackages = [ config.boot.kernelPackages.evdi ];
 		initrd.kernelModules = [ "evdi" ];
 	};
-	systemd.services.dlm.wantedBy = [ "multi-user.target" ];
+	systemd.services.dlm.wantedBy = lib.mkIf config.nixpkgs.config.allowUnfree
+		[ "multi-user.target" ];
 
 }

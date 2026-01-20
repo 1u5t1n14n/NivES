@@ -51,8 +51,12 @@
 		++ lib.optionals host.desktop
 			[ wl-clipboard ];
 
-		persistence."/persist".users.${host.user}.files = lib.mkIf config.programs.lazygit.enable
-			[ ".local/state/lazygit/state.yml" ];
+		persistence."/persist".users.${host.user} = {
+			files = lib.mkIf config.programs.lazygit.enable
+				[ ".local/state/lazygit/state.yml" ];
+			directories = lib.mkIf (builtins.elem pkgs.gh config.environment.systemPackages)
+				[ ".config/gh" ];
+		};
 	};
 
 	# Doctor: Yes, I think it is terminal.

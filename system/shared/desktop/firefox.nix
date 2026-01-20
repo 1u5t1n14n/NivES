@@ -1,4 +1,4 @@
-{ host, ... }:
+{ host, lib, config, ... }:
 
 let
 	getUrl = addonName: authorId: 
@@ -50,12 +50,13 @@ in
 		};
 	};
 
-	environment = {
-		persistence."/persist".users.${host.user}.directories = [ ".mozilla/firefox" ];
-		sessionVariables = {
-			MOZ_USE_XINPUT2 = "1";
-			MOZ_ENABLE_WAYLAND = "1";
+	environment = lib.mkIf config.programs.firefox.enable
+		{
+			persistence."/persist".users.${host.user}.directories = [ ".mozilla/firefox" ];
+			sessionVariables = {
+				MOZ_USE_XINPUT2 = "1";
+				MOZ_ENABLE_WAYLAND = "1";
+			};
 		};
-	};
 
 }
