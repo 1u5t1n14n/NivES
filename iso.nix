@@ -4,7 +4,7 @@
 
 	imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
 
-	environment.systemPackages = [ pkgs.neovim ];
+	environment.systemPackages = [ pkgs.disko pkgs.neovim ];
 
 	console.keyMap = "de";
 
