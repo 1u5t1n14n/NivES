@@ -58,7 +58,7 @@ This configuration configures a LUKS encrypted drive. You will have to put a
 plain-text file that contains your preferred passphrase at `/tmp/passwordFile`.
 
 Now, you can run the flake provided by
-[nix-communnity/disko](https://github.com/nix-community/disko). You will need
+[nix-community/disko](https://github.com/nix-community/disko). You will need
 to accept the partitioning by typing `yes` at some point.
 
 ```bash
