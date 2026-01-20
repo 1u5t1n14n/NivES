@@ -2,7 +2,11 @@
 
 {
 
-	users.users.${host.user}.openssh.authorizedKeys.keys = [ ];
+	users.users.${host.user}.openssh.authorizedKeys.keys = [
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFP9kyiHSaLuGocie+qs2a5jXRRzsOpruo2P+Bq5j4fS user@Thanatos"
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINduKkKYcK2ef0B7n63abU009TjGYdVC+Oqmtbsdflks user@Prometheus"
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHcp2AjNY9/YQOnOsC40WZE79/9z+whkatioUMfImg+ user@Morpheus"
+	];
 
 	services = {
 		openssh = {
