@@ -8,7 +8,7 @@
 			mountOnMedia = true;
 		};
 
-		usbguard.enable = true;
+		usbguard.enable = false;
 	};
 
 }
