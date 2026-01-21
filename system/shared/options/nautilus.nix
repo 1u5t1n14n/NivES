@@ -19,6 +19,7 @@ in
 		services = {
 			gnome.sushi.enable = true;
 			gvfs.enable = lib.mkDefault true;
+			libinput.enable = true;
 		};
 
 		environment = {
