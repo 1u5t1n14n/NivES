@@ -4,9 +4,7 @@ let
 
 	# See <https://wiki.nixos.org/wiki/ZFS> for this wonderful snippet.
 	zfsCompatibleKernelPackages = lib.filterAttrs (
-		name: kernelPackages:
-			(builtins.match "linux_[0-9]+_[0-9]+" name) != null
-			&& (builtins.tryEval kernelPackages).success
+		name: kernelPackages: (builtins.match "linux_[0-9]+_[0-9]+" name) != null && (builtins.tryEval kernelPackages).success
 			&& (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
 	) pkgs.linuxKernel.packages;
 	latestKernelPackage = lib.last (
@@ -48,6 +46,14 @@ in
 
 		consoleLogLevel = 3;
 		initrd = {
+			luks.devices.luks = {
+				# keyFile = lib.mkDefault "/dev/sda1";
+				# keyFileSize = 4096;
+				# keyFileTimeout = 5;
+			};
+			kernelModules = lib.mkIf (builtins.elem "usb_storage" config.boot.initrd.availableKernelModules)
+				[ "usb_storage" ];
+
 			systemd = {
 				enable = true;
 				services.zfsRollback = lib.mkIf config.environment.persistence."/persist".enable {
@@ -93,6 +99,8 @@ in
 				enable = !config.boot.lanzaboote.enable;
 				device = "nodev";
 				efiSupport = true;
+				zfsSupport = true;
+				enableCryptodisk = true;
 			};
 			efi.canTouchEfiVariables = true;
 		};
