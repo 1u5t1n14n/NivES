@@ -6,9 +6,9 @@
 		./shared/options ./shared ./hosts/${host.name}.nix
 	]
 	++ lib.optionals host.desktop
-		[ ./shared/desktop ]
+		[ ./desktop ]
 	++ lib.optionals (!host.desktop)
-		[ ./shared/server ];
+		[ ./server ];
 
 	environment.systemPackages = [ pkgs.home-manager ];
 	system.activationScripts.backupRemove = ''
