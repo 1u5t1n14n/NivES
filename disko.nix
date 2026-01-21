@@ -8,8 +8,7 @@ let
 	};
 
 in
-{
-	disko.devices = {
+{ disko.devices = {
 		disk = {
 			main = {
 				type = "disk";
@@ -42,7 +41,8 @@ in
 							content = {
 								name = "luks";
 								type = "luks";
-								passwordFile = "/tmp/passwordFile";
+								passwordFile = "/tmp/passphrase.key";
+								additionalKeyFiles = [ "/tmp/hdd.key" ];
 								settings.allowDiscards = true;
 								content = {
 									type = "zfs";

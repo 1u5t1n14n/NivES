@@ -55,7 +55,8 @@ is to be partitioned if you have not got a `nvme` drive.
 ```
 
 This configuration configures a LUKS encrypted drive. You will have to put a
-plain-text file that contains your preferred passphrase at `/tmp/passwordFile`.
+plain-text file that contains your preferred passphrase at
+`/tmp/passphrase.key`.
 
 Now, you can run the flake provided by
 [nix-community/disko](https://github.com/nix-community/disko). You will need
@@ -64,6 +65,9 @@ to accept the partitioning by typing `yes` at some point.
 ```bash
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- -m destroy,format,mount disko.nix
 ```
+
+> Alternatively, you could use build the provided installation media and use
+> the included disko package for disk partitioning.
 
 ### `nixos-install`
 
