@@ -1,9 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-	cfg = config.services.paperless;
-
-in
 {
 
 	# TODO: Secret Management
@@ -54,7 +50,10 @@ in
 		};
 	};
 
+	environment.persistence."/persist".directories = lib.mkIf config.services.paperless.enable
+		[ config.services.paperless.dataDir ];
+
 	networking.firewall.allowedTCPPorts = lib.mkIf (config.services.paperless.enable && (config.services.paperless.address == "0.0.0.0"))
-		[ cfg.port ];
+		[ config.services.paperless.port ];
 
 }

@@ -136,6 +136,14 @@ in
 	};
 
 	environment = {
+		persistence."/persist".directories = lib.mkIf config.services.nextcloud.enable
+			[ config.services.nextcloud.home ]
+
+		++ lib.optionals services.minio.enable
+			config.services.minio.dataDir ++ [
+				config.services.minio.configDir
+				config.services.minio.certificatesDir
+			];
 		etc = {
 			minio.text = ''
 				MINIO_ROOT_USER=${config.services.nextcloud.config.dbuser}

@@ -1,4 +1,4 @@
-{ host, config, ... }:
+{ host, config, lib, ... }:
 
 {
 
@@ -13,5 +13,8 @@
 			{ username = host.user; passwordFile = null; }
 		];
 	};
+
+	environment.persistence."/persist".directories = lib.mkIf config.services.anki-sync-server.enable
+		[ config.services.anki-sync-server.baseDirectory ];
 
 }
