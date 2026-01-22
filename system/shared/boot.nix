@@ -47,30 +47,32 @@ in
 		consoleLogLevel = 3;
 		initrd = {
 			luks.devices.luks = {
-				keyFile = lib.mkDefault "/dev/sda1";
-				keyFileSize = 4096;
-				keyFileTimeout = 5;
+				keyFile = lib.mkDefault "/dev/sda";
+				keyFileSize = lib.mkDefault 4096;
+				keyFileTimeout = lib.mkDefault 5;
 			};
 			kernelModules = lib.mkIf (builtins.elem "usb_storage" config.boot.initrd.availableKernelModules)
 				[ "usb_storage" ];
 
 			systemd = {
 				enable = true;
-				services.zfsRollback = lib.mkIf config.environment.persistence."/persist".enable {
-					description = "Roll back to a blank filesystem";
+				services.zfsRollback = lib.mkIf config.environment.persistence."/persist".enable
+					{
+						description = "Roll back to a blank filesystem";
 
-					after = [ "cryptsetup.target" ];
-					wantedBy = [ "initrd.target" ];
-					before = [ "sysroot.mount" ];
+						# after = [ "cryptsetup.target" ];
+						after = [ "zfs.target" ];
+						wantedBy = [ "initrd.target" ];
+						before = [ "sysroot.mount" ];
 
-					unitConfig.DefaultDependencies = "no";
-					serviceConfig.type = "oneshot";
+						unitConfig.DefaultDependencies = "no";
+						serviceConfig.Type = "oneshot";
 
-					path = [ pkgs.zfs ];
-					script = ''
-						zfs rollback -r zroot@blank
-					'';
-				};
+						path = [ pkgs.zfs ];
+						script = ''
+							zfs rollback -r zroot@blank
+						'';
+					};
 			};
 			verbose = false;
 
@@ -84,12 +86,8 @@ in
 		kernelParams = [
 			"udev.log_priority=3"
 			"rd.systemd.show_status=auto"
-
 			"quiet"
-			"splash"
-
 			"boot.shell_on_fail"
-
 			"random.trust_cpu=off"
 		];
 
