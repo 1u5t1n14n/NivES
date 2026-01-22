@@ -47,9 +47,9 @@ in
 		consoleLogLevel = 3;
 		initrd = {
 			luks.devices.luks = {
-				# keyFile = lib.mkDefault "/dev/sda1";
-				# keyFileSize = 4096;
-				# keyFileTimeout = 5;
+				keyFile = lib.mkDefault "/dev/sda1";
+				keyFileSize = 4096;
+				keyFileTimeout = 5;
 			};
 			kernelModules = lib.mkIf (builtins.elem "usb_storage" config.boot.initrd.availableKernelModules)
 				[ "usb_storage" ];
