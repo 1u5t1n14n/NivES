@@ -8,7 +8,12 @@
 		loader.systemd-boot.enable = lib.mkForce false;
 		lanzaboote.enable = true;
 		initrd = {
-			luks.devices.luks.keyFile = "/dev/sdb1";
+			# Not working with SD Card Reader
+			luks.devices.luks = {
+				keyFile = null;
+				keyFileTimeout = null;
+				keyFileSize = null;
+			};
 
 			availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
 			kernelModules = [ ];
