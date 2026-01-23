@@ -9,6 +9,7 @@
 
 		users = {
 			# root.hashedPasswordFile = config.sops.secrets."user/root".path;
+			root.initialPassword = "Gurkensalat";
 			${host.user} = {
 				isNormalUser = true;
 				createHome = true;
