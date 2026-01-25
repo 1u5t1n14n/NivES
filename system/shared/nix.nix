@@ -6,7 +6,7 @@
 		settings = {
 			auto-optimise-store = true;
 			experimental-features = [ "nix-command" "flakes" ];
-			download-buffer-size = 2 * 1024 * 1024 * 1024;
+			download-buffer-size = 4 * 1024 * 1024 * 1024;
 
 			extra-substituters = [ "https://vicinae.cachix.org" ];
 			extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
