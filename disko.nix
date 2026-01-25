@@ -8,7 +8,9 @@ let
 	};
 
 in
-{ disko.devices = {
+{
+
+	disko.devices = {
 		disk = {
 			main = {
 				type = "disk";
@@ -85,4 +87,5 @@ in
 	};
 
 	fileSystems."/persist".neededForBoot = true;
+
 }
