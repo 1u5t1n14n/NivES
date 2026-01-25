@@ -51,7 +51,9 @@ in
 				keyFileSize = lib.mkDefault 4096;
 				keyFileTimeout = lib.mkDefault 5;
 			};
-			kernelModules = lib.mkIf (builtins.elem "usb_storage" config.boot.initrd.availableKernelModules)
+			kernelModules = lib.mkIf (
+				builtins.elem "usb_storage" config.boot.initrd.availableKernelModules
+				&& config.boot.initrd.luks.devices.luks.keyFile != null)
 				[ "usb_storage" ];
 
 			systemd = {
@@ -92,14 +94,7 @@ in
 		];
 
 		loader = {
-			systemd-boot.enable = false;
-			grub = {
-				enable = !config.boot.lanzaboote.enable;
-				device = "nodev";
-				efiSupport = true;
-				zfsSupport = true;
-				enableCryptodisk = true;
-			};
+			systemd-boot.enable = true;
 			efi.canTouchEfiVariables = true;
 		};
 
