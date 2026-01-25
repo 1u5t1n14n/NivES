@@ -1,0 +1,46 @@
+{ config, ... }:
+
+{
+
+	services = {
+		pihole-ftl = {
+
+			lists = [
+				{
+					url = "https://cdn.jsdelir.net/gh/hagezi/dns-blocklist@lates/domains/ultimate.txt";
+					type = "block";
+					enabled = true;
+					description = "hagezi's Ultimate Blocklist";
+				}
+			];
+
+			openFirewallDNS = true;
+			openFirewallWebserver = true;
+
+			settings = {
+				dns = {
+					upstreams = [ "1.1.1.1" ];
+					hosts = [
+						"192.168.178.178 our.home"
+					];
+					domainNeeded = true;
+					expandHosts = true;
+				};
+
+				misc = {
+					# Change to `3`, when everything is working
+					privacylevel = 0;
+
+					# Probably needed?
+					readOnly = true;
+				};
+			};
+		};
+
+		pihole-web = {
+			enable = config.services.pihole-ftl.enable;
+			ports = [ 8080 ];
+		};
+	};
+
+}
