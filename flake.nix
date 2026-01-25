@@ -98,6 +98,14 @@
 						desktop = true;
 					};
 				};
+
+				Atlas = mkNixosConfig {
+					host = {
+						name = "Atlas";
+						user = "1u5t1n14n";
+						desktop = false;
+					};
+				};
 			};
 	};
 }
