@@ -2,8 +2,6 @@
 
 {
 
-	# TODO: Secret Management
-
 	services = {
 		paperless = {
 			address = "0.0.0.0";
@@ -11,7 +9,8 @@
 
 			consumptionDir = "${config.services.paperless.dataDir}/${config.services.paperless.settings.PAPERLESS_APP_TITLE}";
 			consumptionDirIsPublic = true;
-			passwordFile = config.sops.secrets."services/paperless".path;
+			passwordFile = lib.mkIf config.extra.secretsEnabled
+				config.sops.secrets."services/paperless".path;
 
 			settings = {
 				PAPERLESS_APP_TITLE = "Archiv";

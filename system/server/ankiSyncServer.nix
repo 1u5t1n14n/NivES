@@ -2,15 +2,19 @@
 
 {
 
-	# TODO: Secret Management
-
 	services.anki-sync-server = {
 		address = "0.0.0.0";
 		port = 27701;
+
 		openFirewall = (config.services.anki-sync-server.address == "0.0.0.0");
+		baseDirectory = "/var/lib/anki";
 
 		users = [
-			{ username = host.user; passwordFile = null; }
+			{
+				username = host.user;
+				passwordFile = lib.mkIf config.extra.secretsEnabled
+					config.sops.secrets."anki/main".path;
+			}
 		];
 	};
 

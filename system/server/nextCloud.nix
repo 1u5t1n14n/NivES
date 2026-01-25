@@ -50,7 +50,8 @@ in
 				dbtype = "pgsql";
 				dbuser = "nextcloud";
 				adminuser = "root";
-				adminpassFile = # config.sops.secrets."services/nextcloud/main".path;
+				adminpassFile = lib.mkIf config.extra.secretsEnabled
+					config.sops.secrets."services/nextcloud/main".path;
 			};
 
 			maxUploadSize = "1G";
@@ -140,10 +141,12 @@ in
 			[ config.services.nextcloud.home ]
 
 		++ lib.optionals services.minio.enable
-			config.services.minio.dataDir ++ [
+			[
+				config.services.minio.dataDir
 				config.services.minio.configDir
 				config.services.minio.certificatesDir
 			];
+
 		etc = {
 			minio.text = ''
 				MINIO_ROOT_USER=${config.services.nextcloud.config.dbuser}
