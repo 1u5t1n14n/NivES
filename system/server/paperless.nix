@@ -30,7 +30,7 @@
 
 		tika = {
 			enable = config.services.paperless.settings.PAPERLESS_TIKA_ENABLED;
-			enableOCR = true;
+			enableOcr = true;
 
 			port = 9998;
 		};

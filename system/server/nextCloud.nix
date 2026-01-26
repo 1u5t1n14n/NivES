@@ -1,8 +1,6 @@
 { config, host, pkgs, lib, ... }:
 
 let
-	occ = "${config.services.nextcloud.occ}/bin/nextcloud-occ";
-
 	secretKey = "diesisteinsecretkey";
 
 in
@@ -15,21 +13,6 @@ in
 			hostName = "localhost";
 
 			package = pkgs.nextcloud32;
-
-			# Set Theming URL
-			extraOCC = lib.mkIf false
-				''
-					${occ} theming:config url "${
-						if config.services.nextcloud.https then
-							"https"
-						else "http"}://${
-						if (config.services.nextcloud.hostName != "localhost") then
-							config.services.nextcloud.hostName
-						else lib.toLower host.name}"
-
-					${occ} app:disable photos
-					${occ} app:disable dashboard
-				'';
 
 			configureRedis = true;
 			phpOptions."opcache.interned_strings_buffer" = 16;
@@ -89,7 +72,7 @@ in
 				enable = true;
 				bucket = "nextcloud";
 				verify_bucket_exists = true;
-				key = accessKey;
+				key = "nextcloud";
 				secretFile = "/etc/${config.environment.etc.nextcloud.target}";
 				hostname = "localhost";
 				useSsl = false;
@@ -138,14 +121,9 @@ in
 
 	environment = {
 		persistence."/persist".directories = lib.mkIf config.services.nextcloud.enable
-			[ config.services.nextcloud.home ]
+			[ config.services.nextcloud.home "/var/lib/minio" ];
 
-		++ lib.optionals services.minio.enable
-			[
-				config.services.minio.dataDir
-				config.services.minio.configDir
-				config.services.minio.certificatesDir
-			];
+			#++ lib.optionals config.services.minio.enable [ "/var/lib/minio" ];
 
 		etc = {
 			minio.text = ''

@@ -1,4 +1,4 @@
-{ osConfig, config, ... }:
+{ osConfig, config, pkgs, ... }:
 
 {
 
@@ -8,6 +8,8 @@
 
 	programs.niri = {
 		enable = osConfig.programs.niri.enable;
+		package = pkgs.niri;
+
 		settings = {
 			input = {
 				keyboard = {
