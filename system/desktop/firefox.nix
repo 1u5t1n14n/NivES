@@ -18,9 +18,55 @@ in
 			OfferToSaveLogins = false;
 			NoDefaultBookmarks = true;
 			ShowHomeButton = false;
+			DisplayBooksmarksToolbar = "never";
+			PasswordManagerEnabled = false;
+			PromptForDownloadLocations = true;
 
 			StartDownloadsInTempDirectory = true;
-			Cookies = "reject-foreign";
+
+			Cookies = {
+				Behavior = "reject-foreign";
+				Block = [
+					"https://google.com"
+					"https://facebook.com"
+					"https://instagram.com"
+					"https://microsoft.com"
+				];
+			};
+			EnableTrackingProtection = {
+				Value = true;
+				Locked = true;
+
+				Category = "strict";
+
+				Cryptomining = true;
+				EmailTracking = true;
+				SuspectedFingerprinting = true;
+				Fingerprinting = true;
+			};
+			HttpsOnlyMode = "enabled";
+			SanitizeOnShutdown = {
+				FormData = true;
+				SiteSettings = true;
+				Cache = true;
+				Locked = true;
+			};
+
+			GenerativeAI = {
+				Enabled = false;
+				Locked = true;
+			};
+			SearchEngines.Remove = [ "Perplexity" ];
+
+			UserMessaging = {
+				ExtensionRecommendations = false;
+				FeatureRecommendations = false;
+				UrlbarInterventions = false;
+				SkipOnboarding = true;
+				MoreFromMozilla = false;
+				FirefoxLabs = false;
+				Locked = true;
+			};
 
 			CaptivePortal = false;
 			DisableAccounts = true;
