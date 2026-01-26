@@ -64,8 +64,9 @@ in
 			"Desktop" "Downloads" "Documents" "Movies" "Music" "Pictures"
 		]
 
-		++ lib.optionals (config.programs.kdeconnect.enable
+		++ lib.optionals ((config.programs.kdeconnect.enable
 				&& config.programs.kdeconnect.package == pkgs.valent)
+				|| builtins.elem pkgs.valent config.environment.systemPackages)
 			[ ".config/valent" ];
 
 		systemPackages = with pkgs; [ ghostty ]
