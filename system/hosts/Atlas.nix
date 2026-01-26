@@ -3,18 +3,11 @@
 {
 
 	nixpkgs.hostPlatform = "x86_64-linux";
-	disko.devices.disk.main = {
-		device = "/dev/sda";
-		content.partitions.boot = {
-			size = "1M";
-			type = "EF02";
-			attributes = [ 0 ];
-		};
-	};
+	disko.devices.disk.main.device = "/dev/sda";
 
 	boot = {
-		loader.systemd-boot.enable = lib.mkForce false;
-		lanzaboote.enable = true;
+		# loader.systemd-boot.enable = lib.mkForce false;
+		# lanzaboote.enable = false;
 		initrd = {
 			availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" ];
 			kernelModules = [ ];
@@ -38,7 +31,7 @@
 		anki-sync-server.enable = false;
 		immich.enable = false;
 		pihole-ftl.enable = false;
-		homepage-dashboard = true;
+		homepage-dashboard.enable = true;
 	};
 
 }
