@@ -7,7 +7,7 @@
 		address = "0.0.0.0";
 
 		url = lib.mkIf (config.services.opencloud.address == "0.0.0.0")
-			"http://192..168178.178" + config.services.opencloud.port;
+			"http://192.168.178.178:9200";
 		environment = {
 			INITIAL_ADMIN_PASSWORD = "Password";
 		};
@@ -17,6 +17,11 @@
 		[ config.services.opencloud.port ];
 
 	environment.persistence."/persist".directories = lib.mkIf config.services.opencloud.enable
-		[ config.services.opencloud.stateDir ];
+		[{
+			directory = config.services.opencloud.stateDir;
+			user = config.services.opencloud.user;
+			group = config.services.opencloud.group;
+			mode = "0700";
+		}];
 
 }
