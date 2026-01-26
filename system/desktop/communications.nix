@@ -4,7 +4,7 @@
 
 	programs = {
 		localsend = {
-			enable = true;
+			enable = false;
 			openFirewall = true;
 		};
 
@@ -24,9 +24,19 @@
 			bitwarden-desktop signal-desktop ente-auth ungoogled-chromium
 		];
 
-		persistence."/persist".users.${host.user}.directories = [ ".config/Bitwarden" ]
+		persistence."/persist".users.${host.user}.directories = [ ]
 
-		++ lib.optionals config.programs.thunderbird.enable
+			++ lib.optionals (builtins.elem
+				pkgs.bitwarden-desktop
+				config.environment.systemPackages)
+			[ ".config/Bitwarden" ]
+
+			++ lib.optionals (builtins.elem
+				pkgs.ente-auth
+				config.environment.systemPackages)
+			[ ".local/share/io.ente.auth" ]
+
+			++ lib.optionals config.programs.thunderbird.enable
 			[ ".thunderbird" ];
 	};
 
