@@ -27,10 +27,10 @@
 	services = {
 		paperless.enable = false;
 		nextcloud.enable = false;
-		opencloud.enable = false;
+		opencloud.enable = true;
 		anki-sync-server.enable = false;
-		immich.enable = false;
-		pihole-ftl.enable = false;
+		immich.enable = true;
+		pihole-ftl.enable = true;
 		homepage-dashboard.enable = true;
 	};
 
