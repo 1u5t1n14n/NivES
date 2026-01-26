@@ -7,7 +7,7 @@
 
 			lists = [
 				{
-					url = "https://cdn.jsdelir.net/gh/hagezi/dns-blocklist@lates/domains/ultimate.txt";
+					url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/ultimate.txt";
 					type = "block";
 					enabled = true;
 					description = "hagezi's Ultimate Blocklist";
