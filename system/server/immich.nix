@@ -9,6 +9,6 @@
 	};
 
 	environment.persistence."/persist".directories = lib.mkIf config.services.immich.enable
-		[ config.services.immich.mediaLocation ];
+		[ config.services.immich.mediaLocation config.services.postgresql.dataDir ];
 
 }
