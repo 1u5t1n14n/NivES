@@ -46,6 +46,7 @@
 			gh cmatrix browsh imagemagick superfile gnumake
 			pandoc typst gnupg lynx ffmpeg-full texliveFull
 			bitwarden-cli ocrmypdf cava zbar glow
+			inotify-tools flying-carpet
 		]
 
 		++ lib.optionals host.desktop
@@ -54,8 +55,12 @@
 		persistence."/persist".users.${host.user} = {
 			files = lib.mkIf config.programs.lazygit.enable
 				[ ".local/state/lazygit/state.yml" ];
+
 			directories = lib.mkIf (builtins.elem pkgs.gh config.environment.systemPackages)
-				[ ".config/gh" ];
+				[ ".config/gh" ]
+
+			++ lib.optionals (builtins.elem pkgs.bitwarden-cli config.environment.systemPackages)
+				[ ".config/Bitwarden" ]
 		};
 	};
 
