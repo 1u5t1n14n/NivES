@@ -27,8 +27,7 @@
 				dbtype = "pgsql";
 				dbuser = "nextcloud";
 				adminuser = "root";
-				adminpassFile = lib.mkIf config.extra.secretsEnabled
-					config.sops.secrets."services/nextcloud/main".path;
+				adminpassFile = config.sops.secrets."services/nextcloud/root".path;
 			};
 
 			maxUploadSize = "1G";

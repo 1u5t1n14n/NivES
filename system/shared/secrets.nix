@@ -7,7 +7,6 @@
 
 		persistence."/persist" = {
 			directories = [ "/etc/ssh" ];
-			files = [ "/etc/sops/age/keys.txt" ];
 			users.${host.user}.directories = [ { directory = ".config/sops/age/"; mode = "700"; } ];
 		};
 	};
@@ -15,7 +14,7 @@
 
 	sops = {
 		log = [ "secretChanges" ];
-		defaultSopsFile = ../../secrets.yaml;
+		defaultSopsFile = ../../keys.yaml;
 		defaultSopsFormat = "yaml";
 
 		age = {

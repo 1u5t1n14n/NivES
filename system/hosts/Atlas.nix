@@ -18,7 +18,6 @@
 	};
 
 	environment.persistence."/persist".enable = true;
-	extra.secretsEnabled = false;
 
 	# Did you read the Comment?
 	# Change to your system.stateVersion
@@ -28,7 +27,7 @@
 		paperless.enable = false;
 		nextcloud.enable = false;
 		opencloud.enable = true;
-		anki-sync-server.enable = false;
+		anki-sync-server.enable = true;
 		immich.enable = true;
 		pihole-ftl.enable = true;
 		homepage-dashboard.enable = true;

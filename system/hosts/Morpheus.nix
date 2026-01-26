@@ -8,22 +8,21 @@
 		loader.systemd-boot.enable = lib.mkForce false;
 		lanzaboote.enable = true;
 		initrd = {
+			availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+			kernelModules = [ ];
+
 			# Not working with SD Card Reader
 			luks.devices.luks = {
 				keyFile = null;
 				keyFileTimeout = null;
 				keyFileSize = null;
 			};
-
-			availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
-			kernelModules = [ ];
 		};
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
 	};
 
 	environment.persistence."/persist".enable = true;
-	extra.secretsEnabled = false;
 
 	# Did you read the Comment?
 	# Change to your system.stateVersion

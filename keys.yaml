@@ -1,0 +1,26 @@
+user:
+    main: ENC[AES256_GCM,data:Vm+kgAUlJouMLDWlZX8YRlBqSyPv58b2s7JS/L2WK09UNkXh/nO4q0zJJje6ve9t7OpbiI5xLIKQdhZtGVcXbQotq6yjEn6kMw==,iv:xwdbJ0qCyS+7PTUhmsdLEFTzPzdH5upGiUYJp2nUVZU=,tag:5pDb02PS/1R8bpd5xEbkwQ==,type:str]
+    root: ENC[AES256_GCM,data:z/QkrDsWNYXglGspyd+t0WvxfF44+Nw+bWeOvBa/A1cukzMPpGnRfLW4eflV491fN4bo/JZe+d3EkPLlSiZBjykL57lyWxQ3UA==,iv:cbeTK9gxu28n6+awWlEDfVrwIEPHaJ+xss9ogsJ3tX4=,tag:mYGQ1ZaWfb6WmLVindGlmA==,type:str]
+services:
+    anki:
+        root: ENC[AES256_GCM,data:XgpJKw==,iv:TmU8aZf0RkbSB4G8WsqY7+sYVM3WnVkfPVT0Gt3Sva0=,tag:oPDldeAbKXKijCAwhYBo8Q==,type:str]
+        nathan: ENC[AES256_GCM,data:5uWjaV0=,iv:WC6azcOzElDsbGCNVqflP7Kt7s163W5jVvtslEwZozo=,tag:yxfhHIqO7NxV6K+MUqYgag==,type:int]
+    paperless:
+        root: ENC[AES256_GCM,data:/nr8xzPRUMD9dKvkIuloSA==,iv:rsugbtBl4+ZXFq+/9bpfdtILf9zok28sCpO/F1bh1RI=,tag:v7M4BQ2XwYDjJxc0iSzVag==,type:str]
+    nextcloud:
+        root: ENC[AES256_GCM,data:nXrsufNYws9X5MK6,iv:8xTmlZBe68dED70QVZkRGCqa9iFt7ID1CKLj1fdkoGU=,tag:hwG2BRd5Gkc/5OR7kKaR+A==,type:str]
+sops:
+    age:
+        - recipient: age1rrz6wef7gfymhnp30d46w2mfaldsztusklcezaj7g65qxxmqyyzqtt4ugc
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCWHk0c0owdkUzbktOSllR
+            NGM5WUhTNmYwMW9sUlJmRytnZ1NIaCtTQXhVCmt6dE1ZOHpwNmFjQkMvTnl5YW1x
+            dmdJcm5HUVlwVVU2anVVYWlHcXBMZFkKLS0tIEtLMlIvRjVsbFZKcldBcFR2K0g4
+            UVpIVk9QbGIyZXZxdURKMm56U2p2QncKo91q6wUt5AoTa/rkqwcqY/M8g+xLC8As
+            xJY6pLajdMEx0s8V/eRLvs4jTH5IUa9LAm1kkTCXn2Z5TLvFZdX3yw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-01-26T16:06:47Z"
+    mac: ENC[AES256_GCM,data:bu7qlaf+BqeO/vBv3XkEdrUpIpFeUqDTQgs2VVhf5M2WyTScuLPvSIWlZYn+fZJmzjx3i9ysCxiyjuDT79O7wcj+8GdIjR7AFewkPvE4iKXmOYTVa4Ql0Xc3wTvL/d9CrxzS5n82MC78aYXORK+XQ4QlfuiPN6n0qfZyt2+IzB8=,iv:2c0pZjzec0+aisU+MGxFsgNp6oQGf3UXEyyY8q0Lqws=,tag:fVKQX86edKxKjSOjb5Ys4A==,type:str]
+    unencrypted_suffix: _unencrypted
+    version: 3.11.0

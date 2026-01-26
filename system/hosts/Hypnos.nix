@@ -17,7 +17,6 @@
 	};
 
 	environment.persistence."/persist".enable = true;
-	extra.secretsEnabled = false;
 
 	# Did you read the Comment?
 	# Change to your system.stateVersion

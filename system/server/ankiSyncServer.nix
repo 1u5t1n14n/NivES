@@ -12,8 +12,11 @@
 		users = [
 			{
 				username = host.user;
-				passwordFile = lib.mkIf config.extra.secretsEnabled
-					config.sops.secrets."anki/main".path;
+				passwordFile = config.sops.secrets."services/anki/main".path;
+			}
+			{
+				username = "nathan";
+				passwordFile = config.sops.secrets."services/anki/nathan".path;
 			}
 		];
 	};

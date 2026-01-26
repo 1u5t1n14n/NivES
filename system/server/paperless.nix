@@ -9,11 +9,10 @@
 
 			consumptionDir = "${config.services.paperless.dataDir}/${config.services.paperless.settings.PAPERLESS_APP_TITLE}";
 			consumptionDirIsPublic = true;
-			passwordFile = lib.mkIf config.extra.secretsEnabled
-				config.sops.secrets."services/paperless".path;
+			passwordFile = config.sops.secrets."services/paperless/root".path;
 
 			settings = {
-				PAPERLESS_APP_TITLE = "Archiv";
+				PAPERLESS_APP_TITLE = "Less Our Home";
 				PAPERLESS_ADMIN_USER = config.services.nextcloud.config.adminuser;
 				PAPERLESS_OCR_LANGUAGE = "deu+eng";
 				PAPERLESS_OCR_USER_ARGS = {
