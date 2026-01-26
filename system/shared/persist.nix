@@ -8,9 +8,6 @@
 
 		# Important (I think)
 		directories = [ "/var/lib/nixos" ];
-
-		# Not as important
-		users.${host.user}.directories = [ "Desktop" "Downloads" "Documents" "Pictures" "Movies" "Music" ];
 	};
 
 }

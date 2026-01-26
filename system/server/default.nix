@@ -1,4 +1,4 @@
-{ ... }:
+{ host, ... }:
 
 {
 
@@ -10,6 +10,10 @@
 		./nextCloud.nix
 		./openCloud.nix
 		./paperless.nix
+	];
+
+	environment.persistence."/persist".users.${host.user}.directories = [
+		"Persist"
 	];
 
 }

@@ -60,6 +60,8 @@ in
 	environment = {
 		persistence."/persist".users.${host.user}.directories = [
 			{ directory = ".local/share/keyrings"; mode = "700"; }
+
+			"Desktop" "Downloads" "Documents" "Movies" "Music" "Pictures"
 		]
 
 		++ lib.optionals (config.programs.kdeconnect.enable
