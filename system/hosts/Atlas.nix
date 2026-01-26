@@ -9,7 +9,7 @@
 		# loader.systemd-boot.enable = lib.mkForce false;
 		# lanzaboote.enable = false;
 		initrd = {
-			availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" ];
+			availableKernelModules = [ "usb_storage" "xhci_pci" "ahci" "sd_mod" ];
 			kernelModules = [ ];
 			luks.devices.luks.keyFile = "/dev/sdb";
 		};
