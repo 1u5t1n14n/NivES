@@ -18,7 +18,7 @@ in
 				content = {
 					type = "gpt";
 					partitions = {
-						boot = lib.mkDefault {
+						boot = {
 							size = "512M";
 							type = "EF00";
 							content = {
