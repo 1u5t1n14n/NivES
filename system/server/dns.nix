@@ -21,7 +21,9 @@
 				dns = {
 					upstreams = [ "1.1.1.1" ];
 					hosts = [
-						"192.168.178.178 our.home"
+						"192.168.178.185 our.home"
+						"192.168.178.185 cloud.our.home"
+						"192.168.178.185 less.our.home"
 					];
 					domainNeeded = true;
 					expandHosts = true;

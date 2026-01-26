@@ -1,16 +1,10 @@
 { config, host, pkgs, lib, ... }:
 
-let
-	secretKey = "diesisteinsecretkey";
-
-in
 {
-
-	# TODO: Secret Management
 
 	services = {
 		nextcloud = {
-			hostName = "localhost";
+			hostName = "cloud.our.home";
 
 			package = pkgs.nextcloud32;
 
@@ -63,7 +57,7 @@ in
 
 				trusted_domains = [
 					config.services.nextcloud.hostName
-					"192.168.178.178"
+					"192.168.178.185"
 					host.name
 				];
 			};
@@ -94,12 +88,12 @@ in
 		};
 	};
 
-	systemd.services = {
+	systemd.services = lib.mkIf false {
 		minioSetup = lib.mkIf config.services.minio.enable
 			{
 				path = [ pkgs.minio-client pkgs.getent ];
 				script = ''
-					${lib.getExe pkgs.minio-client} alias set minio http://${config.services.nextcloud.config.objectstore.s3.hostname}:${toString config.services.nextcloud.config.objectstore.s3.port} ${config.services.nextcloud.config.objectstore.s3.key} ${secretKey} --api s3v4
+					${lib.getExe pkgs.minio-client} alias set minio http://${config.services.nextcloud.config.objectstore.s3.hostname}:${toString config.services.nextcloud.config.objectstore.s3.port} ${config.services.nextcloud.config.objectstore.s3.key} ${config.environment.etc.nextcloud.text} --api s3v4
 					${lib.getExe pkgs.minio-client} mb --ignore-existing minio/${config.services.nextcloud.config.objectstore.s3.bucket}
 				'';
 				serviceConfig = {
@@ -123,14 +117,12 @@ in
 		persistence."/persist".directories = lib.mkIf config.services.nextcloud.enable
 			[ config.services.nextcloud.home "/var/lib/minio" ];
 
-			#++ lib.optionals config.services.minio.enable [ "/var/lib/minio" ];
-
 		etc = {
 			minio.text = ''
 				MINIO_ROOT_USER=${config.services.nextcloud.config.dbuser}
-				MINIO_ROOT_PASSWORD=${secretKey}
+				MINIO_ROOT_PASSWORD=${config.environment.etc.nextcloud.text}
 			'';
-			nextcloud.text = secretKey;
+			nextcloud.text = "diesisteinsecretkey";
 		};
 	};
 
