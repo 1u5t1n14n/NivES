@@ -18,7 +18,7 @@ in
 
 		services = {
 			gnome.sushi.enable = true;
-			gvfs.enable = lib.mkDefault true;
+			gvfs.enable = true;
 			libinput.enable = true;
 		};
 
