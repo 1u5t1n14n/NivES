@@ -3,9 +3,9 @@
 {
 
 	users.users.${host.user}.openssh.authorizedKeys.keys = [
-		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFP9kyiHSaLuGocie+qs2a5jXRRzsOpruo2P+Bq5j4fS user@Thanatos"
-		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINduKkKYcK2ef0B7n63abU009TjGYdVC+Oqmtbsdflks user@Prometheus"
-		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHcp2AjNY9/YQOnOsC40WZE79/9z+whkatioUMfImg+ user@Morpheus"
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFP9kyiHSaLuGocie+qs2a5jXRRzsOpruo2P+Bq5j4fS Thanatos"
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINH7Wl16herw523R0RoGrYanw36UsjF09OfLbGyk1aEv Apollon"
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHcp2AjNY9/YQOnOsC40WZE79/9z+whkatioUMfImg+ Morpheus"
 	];
 
 	services = {
@@ -36,12 +36,6 @@
 				maxtime = "168h";
 				overalljails = true;
 			};
-		};
-
-		endlessh = {
-			enable = config.services.openssh.enable;
-			port = 22;
-			openFirewall = true;
 		};
 	};
 
