@@ -49,7 +49,7 @@ in
 			luks.devices.luks = {
 				keyFile = lib.mkDefault "/dev/sda";
 				keyFileSize = lib.mkDefault 4096;
-				keyFileTimeout = lib.mkDefault 5;
+				keyFileTimeout = lib.mkDefault 3;
 			};
 			kernelModules = lib.mkIf (
 				builtins.elem "usb_storage" config.boot.initrd.availableKernelModules
