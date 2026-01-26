@@ -29,13 +29,13 @@
 		};
 
 		tika = {
-			enable = config.services.paperless.settings.PAPERLESS_TIKA_ENABLED;
+			enable = config.services.paperless.settings.PAPERLESS_TIKA_ENABLED && config.services.paperless.enable;
 			enableOcr = true;
 
 			port = 9998;
 		};
 		gotenberg = {
-			enable = config.services.paperless.settings.PAPERLESS_GOTENBERG_ENABLED;
+			enable = config.services.paperless.settings.PAPERLESS_GOTENBERG_ENABLED && config.services.paperless.enable;
 
 			chromium = {
 				package = pkgs.ungoogled-chromium;
