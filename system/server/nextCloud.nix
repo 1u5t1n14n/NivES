@@ -114,8 +114,18 @@
 	};
 
 	environment = {
-		persistence."/persist".directories = lib.mkIf config.services.nextcloud.enable
-			[ config.services.nextcloud.home "/var/lib/minio" ];
+		persistence."/persist".directories = [ ]
+
+		++ lib.optionals config.services.nextcloud.enable
+			[ config.services.nextcloud.home ]
+
+		++ lib.optionals config.services.minio.enable
+			[{
+				directory = "/var/lib/minio";
+				user = config.systemd.services.minio.serviceConfig.User;
+				group = config.systemd.services.minio.serviceConfig.Group;
+				mode = "0700";
+			}];
 
 		etc = {
 			minio.text = ''

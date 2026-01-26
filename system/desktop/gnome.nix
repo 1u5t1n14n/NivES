@@ -66,8 +66,15 @@ in
 
 		++ lib.optionals ((config.programs.kdeconnect.enable
 				&& config.programs.kdeconnect.package == pkgs.valent)
-				|| builtins.elem pkgs.valent config.environment.systemPackages)
-			[ ".config/valent" ];
+				|| builtins.elem
+					pkgs.valent
+					config.environment.systemPackages)
+			[ ".config/valent" ]
+
+		++ lib.optionals (builtins.elem
+				pkgs.fractal
+				config.environment.systemPackages)
+			[ ".local/share/fractal" ];
 
 		systemPackages = with pkgs; [ ghostty ]
 

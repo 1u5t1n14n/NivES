@@ -26,17 +26,17 @@
 
 		persistence."/persist".users.${host.user}.directories = [ ]
 
-			++ lib.optionals (builtins.elem
+		++ lib.optionals (builtins.elem
 				pkgs.bitwarden-desktop
 				config.environment.systemPackages)
 			[ ".config/Bitwarden" ]
 
-			++ lib.optionals (builtins.elem
+		++ lib.optionals (builtins.elem
 				pkgs.ente-auth
 				config.environment.systemPackages)
 			[ ".local/share/io.ente.auth" ]
 
-			++ lib.optionals config.programs.thunderbird.enable
+		++ lib.optionals config.programs.thunderbird.enable
 			[ ".thunderbird" ];
 	};
 

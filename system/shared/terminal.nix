@@ -56,11 +56,12 @@
 			files = lib.mkIf config.programs.lazygit.enable
 				[ ".local/state/lazygit/state.yml" ];
 
-			directories = lib.mkIf (builtins.elem pkgs.gh config.environment.systemPackages)
-				[ ".config/gh" ]
+			directories = [ ]
 
-			++ lib.optionals (builtins.elem pkgs.bitwarden-cli config.environment.systemPackages)
-				[ ".config/Bitwarden" ]
+			++ lib.optionals (builtins.elem
+					pkgs.gh
+					config.environment.systemPackages)
+				[ ".config/gh" ];
 		};
 	};
 
