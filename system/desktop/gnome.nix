@@ -71,19 +71,23 @@ in
 		++ lib.optionals (!config.services.gnome.core-apps.enable)
 			[	citations
 				diebahn
+				drum-machine
 				eartag
+				exhibit
+				fractal
 				gnome-podcasts
 				learn6502
 				morewaita-icon-theme
+				nucleus
 				papers
 				pdfarranger
+				planify
 				showtime
 				typesetter
 				wordbook
 
 				baobab
 				decibels
-				# epiphany
 				file-roller
 				gnome-calculator
 				gnome-characters
