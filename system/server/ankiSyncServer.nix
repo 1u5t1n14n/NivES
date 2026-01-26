@@ -12,13 +12,18 @@
 		users = [
 			{
 				username = host.user;
-				passwordFile = config.sops.secrets."services/anki/main".path;
+				passwordFile = config.sops.secrets."services/anki/root".path;
 			}
 			{
 				username = "nathan";
 				passwordFile = config.sops.secrets."services/anki/nathan".path;
 			}
 		];
+	};
+
+	sops.secrets = {
+		"services/anki/root" = { };
+		"services/anki/nathan" = { };
 	};
 
 	environment.persistence."/persist".directories = lib.mkIf config.services.anki-sync-server.enable

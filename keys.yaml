@@ -4,7 +4,7 @@ user:
 services:
     anki:
         root: ENC[AES256_GCM,data:XgpJKw==,iv:TmU8aZf0RkbSB4G8WsqY7+sYVM3WnVkfPVT0Gt3Sva0=,tag:oPDldeAbKXKijCAwhYBo8Q==,type:str]
-        nathan: ENC[AES256_GCM,data:5uWjaV0=,iv:WC6azcOzElDsbGCNVqflP7Kt7s163W5jVvtslEwZozo=,tag:yxfhHIqO7NxV6K+MUqYgag==,type:int]
+        nathan: ENC[AES256_GCM,data:uDZ8kyo=,iv:h5OiqzQoobZcZlmyf2nbPpCxSUckQXfAemMDgNSkycY=,tag:3UPY6YVGH9K5lp0xtH2hug==,type:str]
     paperless:
         root: ENC[AES256_GCM,data:/nr8xzPRUMD9dKvkIuloSA==,iv:rsugbtBl4+ZXFq+/9bpfdtILf9zok28sCpO/F1bh1RI=,tag:v7M4BQ2XwYDjJxc0iSzVag==,type:str]
     nextcloud:
@@ -20,7 +20,7 @@ sops:
             UVpIVk9QbGIyZXZxdURKMm56U2p2QncKo91q6wUt5AoTa/rkqwcqY/M8g+xLC8As
             xJY6pLajdMEx0s8V/eRLvs4jTH5IUa9LAm1kkTCXn2Z5TLvFZdX3yw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-01-26T16:06:47Z"
-    mac: ENC[AES256_GCM,data:bu7qlaf+BqeO/vBv3XkEdrUpIpFeUqDTQgs2VVhf5M2WyTScuLPvSIWlZYn+fZJmzjx3i9ysCxiyjuDT79O7wcj+8GdIjR7AFewkPvE4iKXmOYTVa4Ql0Xc3wTvL/d9CrxzS5n82MC78aYXORK+XQ4QlfuiPN6n0qfZyt2+IzB8=,iv:2c0pZjzec0+aisU+MGxFsgNp6oQGf3UXEyyY8q0Lqws=,tag:fVKQX86edKxKjSOjb5Ys4A==,type:str]
+    lastmodified: "2026-01-26T16:27:33Z"
+    mac: ENC[AES256_GCM,data:W+T04xanxB04iZYvlpYjrrVpNQy5j0OUWSdJnbaKDwHadXdaXMqJgFQHlZersMvzKh+OnndB8CX+aC6XXNixN6zesc/pfcSlEPKrQSDRarMc1Av0SObBVfZMu5bhk63F0bLm0HveDL2D4HsNozGbPGfcVCRn04ivbdOFBBQAuJo=,iv:t4vYDssJuueEG5TFnhmue9D5iAtZeEIRBwtJez8HYD8=,tag:OpUbS1fS1OqjKsBo0YHo4w==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.11.0
