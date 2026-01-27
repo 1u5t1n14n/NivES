@@ -7,7 +7,7 @@
 			address = "0.0.0.0";
 			port = 28981;
 
-			consumptionDir = "${config.services.paperless.dataDir}/${config.services.paperless.settings.PAPERLESS_APP_TITLE}";
+			consumptionDir = "${config.services.paperless.dataDir}/Capitalism";
 			consumptionDirIsPublic = true;
 			passwordFile = config.sops.secrets."services/paperless/root".path;
 
