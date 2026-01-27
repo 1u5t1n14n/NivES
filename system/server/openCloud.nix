@@ -7,10 +7,9 @@
 		address = "0.0.0.0";
 
 		url = lib.mkIf (config.services.opencloud.address == "0.0.0.0")
-			"http://192.168.178.178:9200";
-		environment = {
-			INITIAL_ADMIN_PASSWORD = "Password";
-		};
+			"https://192.168.178.185:9200";
+
+		environment.INITIAL_ADMIN_PASSWORD = "Password";
 	};
 
 	networking.firewall.allowedTCPPorts = lib.mkIf (config.services.opencloud.address == "0.0.0.0")

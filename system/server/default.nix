@@ -12,8 +12,6 @@
 		./paperless.nix
 	];
 
-	environment.persistence."/persist".users.${host.user}.directories = [
-		"Persist"
-	];
+	environment.persistence."/persist".users.${host.user}.directories = [ "Persist" ];
 
 }
