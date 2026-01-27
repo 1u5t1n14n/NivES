@@ -24,10 +24,40 @@
 
 		services = [
 			{
+				Networking = [
+					{
+						FritzBox = {
+							href = "http://fritz.box";
+							ping = "http://fritz.box";
+							icon = "fritzbox.svg";
+						};
+					}
+					{
+						PiHole = {
+							href = "http://192.168.178.185:8080";
+							ping = "http://192.168.178.185:8080";
+							icon = "pi-hole.svg";
+						};
+					}
+				];
+			}
+
+			{
+				Cloud = [
+					{
+						OpenCloud = {
+							href = "https://192.168.178.185:9200";
+							ping = "https://192.168.178.185:9200";
+							icon = "open-cloud.svg";
+						};
+					}
+				];
+			}
+
+			{
 				Sync = [
 					{
 						Immich = {
-							description = "Easily synchronise your Photos";
 							href = "http://192.168.178.185:2283";
 							ping = "http://192.168.178.185:2283";
 							icon = "immich.svg";
