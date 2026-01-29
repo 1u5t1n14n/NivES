@@ -51,16 +51,41 @@
 							icon = "open-cloud.svg";
 						};
 					}
+					{
+						Immich = {
+							href = "http://192.168.178.185:2283";
+							ping = "http://192.168.178.185:2283";
+							icon = "immich.svg";
+						};
+					}
 				];
 			}
 
 			{
 				Sync = [
 					{
-						Immich = {
-							href = "http://192.168.178.185:2283";
-							ping = "http://192.168.178.185:2283";
-							icon = "immich.svg";
+						"ntfy.sh" = {
+							href = "http://192.168.178.185:8088";
+							ping = "http://192.168.178.185:8088";
+							icon = "ntfy.svg";
+						};
+					}
+					{
+						Anki = {
+							href = "http://192.168.178.185:27701";
+							ping = "http://192.168.178.185:27701";
+						};
+					}
+				];
+			}
+
+			{
+				Miscellaneous = [
+					{
+						Gitea = {
+							href = "http://192.168.178.185:8880";
+							ping = "http://192.168.178.185:8880";
+							icon = "gitea.svg";
 						};
 					}
 				];
