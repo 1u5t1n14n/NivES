@@ -7,7 +7,7 @@
 		port = 27701;
 
 		openFirewall = (config.services.anki-sync-server.address == "0.0.0.0");
-		baseDirectory = "/var/lib/anki";
+		# baseDirectory = "/var/lib/anki";
 
 		users = [
 			{
@@ -26,7 +26,6 @@
 		"services/anki/nathan" = { };
 	};
 
-	environment.persistence."/persist".directories = lib.mkIf config.services.anki-sync-server.enable
-		[ config.services.anki-sync-server.baseDirectory ];
+	environment.persistence."/persist".directories = lib.mkIf config.services.anki-sync-server.enable [ "/var/lib/private/anki-sync-server" ];
 
 }
