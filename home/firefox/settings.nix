@@ -10,6 +10,7 @@
 		# So do not wonder as to why I included Windows-specific
 		# options.
 
+		"ui.key.menuAccessKeyFocuses" = false;
 		"ui.key.menuAccessKey" = false;
 		"ui.key.generalAccessKey" = 18; # ALT
 
@@ -204,7 +205,7 @@
 		"browser.download.folderList" = 2;
 		"layout.css.prefers-color-scheme.content-override" = 0;
 		"toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-		"extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+		"extensions.activeThemeID" = "{22b0eca1-8c02-4c0d-a5d7-6604ddd9836e}";
 		"dom.popup_allowed_events" = "click dblclick mousedown pointerdown";
 		"browser.toolbars.bookmarks.visibility" = "never";
 		"browser.download.autohideButton" = false;
