@@ -4,6 +4,7 @@
 
 	programs.alacritty = {
 		enable = true;
+		theme = "campbell";
 		settings = {
 			cursor.style = {
 				shape = "Block";
