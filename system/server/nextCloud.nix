@@ -56,7 +56,6 @@
 
 				trusted_domains = [
 					config.services.nextcloud.hostName
-					"192.168.178.185"
 					host.name
 				];
 			};
@@ -87,6 +86,8 @@
 		};
 	};
 
+	sops.secrets."services/nextcloud/root".owner = config.services.nextcloud.config.dbuser;
+
 	systemd.services = lib.mkIf false {
 		minioSetup = lib.mkIf config.services.minio.enable
 			{
@@ -116,7 +117,12 @@
 		persistence."/persist".directories = [ ]
 
 		++ lib.optionals config.services.nextcloud.enable
-			[ config.services.nextcloud.home ]
+			[{
+				directory = config.services.nextcloud.home;
+				user = config.services.nextcloud.config.dbuser;
+				group = config.users.users.${config.services.nextcloud.config.dbuser}.group;
+				mode = "0700";
+			}]
 
 		++ lib.optionals config.services.minio.enable
 			[{

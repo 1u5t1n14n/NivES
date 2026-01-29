@@ -24,9 +24,11 @@
 	system.stateVersion = "25.11";
 
 	services = {
+		gitea.enable = true;
+		ntfy-sh.enable = true;
 		paperless.enable = false;
-		nextcloud.enable = false;
-		opencloud.enable = true;
+		nextcloud.enable = true;
+		opencloud.enable = false;
 		anki-sync-server.enable = true;
 		immich.enable = true;
 		pihole-ftl.enable = true;
