@@ -3,7 +3,10 @@
 {
 
 	programs.nixvim = {
-		globals.mapleader = " ";
+		globals = {
+			mapleader = " ";
+			maplocalleader = ",";
+		};
 
 		plugins = {
 			telescope.keymaps = lib.mkIf config.programs.nixvim.plugins.telescope.enable {
@@ -21,6 +24,8 @@
 				};
 			};
 		};
+
+		keymaps = [ ];
 	};
 
 }
