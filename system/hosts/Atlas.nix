@@ -24,8 +24,8 @@
 	system.stateVersion = "25.11";
 
 	services = {
-		gitea.enable = true;
-		ntfy-sh.enable = true;
+		gitea.enable = false;
+		ntfy-sh.enable = false;
 		paperless.enable = false;
 		nextcloud.enable = true;
 		opencloud.enable = false;
