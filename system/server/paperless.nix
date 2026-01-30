@@ -12,7 +12,7 @@
 			passwordFile = config.sops.secrets."services/paperless/root".path;
 
 			settings = {
-				PAPERLESS_APP_TITLE = "Less Our Home";
+				PAPERLESS_APP_TITLE = "Less Is Internal";
 				PAPERLESS_ADMIN_USER = config.services.nextcloud.config.adminuser;
 				PAPERLESS_OCR_LANGUAGE = "deu+eng";
 				PAPERLESS_OCR_USER_ARGS = {

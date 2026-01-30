@@ -4,7 +4,7 @@
 
 	services = {
 		nextcloud = {
-			hostName = "cloud.our.home";
+			hostName = "cloud.is.internal";
 
 			package = pkgs.nextcloud32;
 
