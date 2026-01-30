@@ -18,7 +18,7 @@ in
 			OfferToSaveLogins = false;
 			NoDefaultBookmarks = true;
 			ShowHomeButton = false;
-			DisplayBooksmarksToolbar = "never";
+			DisplayBookmarksToolbar = "never";
 			PasswordManagerEnabled = false;
 			PromptForDownloadLocations = true;
 
@@ -94,12 +94,26 @@ in
 					# (getUrl "localtube-manager" 18857709)
 				];
 			};
+
+			Preferences = {
+				# Personal Preference
+				"ui.key.menuAccessKeyFocuses" = false;
+				"widget.use-xdg-desktop-portal.file-picker" = 1;
+				"browser.aboutConfig.showWarning" = false;
+				"browser.startup.page" = 0;
+
+				# Telemetry
+				"geo.provider.use_geoclue" = false;
+				"app.normandy.enabled" = false;
+				"breakpad.reportURL" = "";
+				"browser.tabs.crashReporting.sendReport" = false;
+			};
 		};
 	};
 
 	environment = lib.mkIf config.programs.firefox.enable
 		{
-			persistence."/persist".users.${host.user}.directories = [ ".mozilla/firefox" ];
+			persistence."/persist".users.${host.user}.directories = [ ".mozilla/firefox/default" ];
 			sessionVariables = {
 				MOZ_USE_XINPUT2 = "1";
 				MOZ_ENABLE_WAYLAND = "1";

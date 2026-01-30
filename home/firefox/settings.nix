@@ -3,70 +3,6 @@
 {
 
 	programs.firefox.profiles.default.settings = {
-		# This is just copied from the arkenfox Project.
-		# Take a look at it for more details.
-
-		# I am going to use the generated user.js on Windows too.
-		# So do not wonder as to why I included Windows-specific
-		# options.
-
-		"ui.key.menuAccessKeyFocuses" = false;
-		"ui.key.menuAccessKey" = false;
-		"ui.key.generalAccessKey" = 18; # ALT
-
-		"browser.gnome-search-provider.enabled" = true;
-		"widget.use-xdg-desktop-portal.file-picker" = 1;
-		"browser.aboutConfig.showWarning" = false;
-		"browser.quitShortcut.disabled" = true;
-
-		# Startup
-		"browser.startup.page" = 0;
-		"browser.startup.homepage" = "about:blank";
-		"browser.newtabpage.enabled" = false;
-		"browser.newtabpage.activity-stream.default.sites" = false;
-		"browser.newtabpage.activity-stream.feeds.telemetry" = false;
-		"browser.newtabpage.activity-stream.telemetry" = false;
-		"extensions.pocket.enabled" = false;
-
-		# Geolocation
-		"geo.provider.ms-windows-location" = false;
-		"geo.provider.use_geoclue" = false;
-
-		# Recomendations
-		"extensions.getAddons.showPane" = false;
-		"extensions.htmlaboutaddons.recommendations.enabled" = false;
-		"browser.discovery.enabled" = false;
-		"browser.shopping.experience2023.enabled" = false;
-
-		# Telemetry
-		"toolkit.telemetry.unified" = false;
-		"toolkit.telemetry.enabled" = false;
-		"toolkit.telemetry.server" = false;
-		"toolkit.telemetry.newProfilePing.enabled" = false;
-		"toolkit.telemetry.shutdownPingSender.enabled" = false;
-		"toolkit.telemetry.updatePing.enabled" = false;
-		"toolkit.telemetry.bhrPing.enabled" = false;
-		"toolkit.telemetry.firstShutdownPing.enabled" = false;
-		"toolkit.telemetry.coverage.opt-out" = true;
-		"toolkit.coverage.opt-out" = true;
-		"toolkit.coverage.endpoint.base" = "";
-
-		# Studies
-		"app.shield.optoutstudies.enabled" = false;
-		"app.normandy.enabled" = false;
-		"app.normandy.api_url" = "";
-		
-		# Crash Reports
-		"breakpad.reportURL" = "";
-		"browser.tabs.crashReporting.sendReport" = false;
-		"browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
-
-		"captivedetect.canonicalURL" = "";
-		"network.connectivity-service.enabled" = false;
-
-		"browser.safebrowsing.downloads.remote.enabled" = false;
-		"browser.safebrowsing.downloads.remote.url" = "";
-
 		# Implicit Outbound
 		"network.prefetch-next" = false;
 		"network.dns.disablePrefetch" = true;
@@ -102,11 +38,6 @@
 		"layout.css.visited_links_enabled" = false;
 		"full-screen-api.warning.timeout" = 0;
 		
-		# Passwords
-		"signon.autofillForms" = false;
-		"signon.formlessCapture.enabled" = false;
-		"network.auth.subresource-http-auth-allow" = 1;
-
 		# Disk Avoidance
 		"browser.cache.disk.enable" = false;
 		"browser.cache.memory.enable" = true;
@@ -173,10 +104,6 @@
 		"extensions.postDownloadThirdPartyPrompt" = false;
 		"extensions.webextensions.restritedDomains" = "";
 
-		# ETP
-		"privacy.trackingprotection.enabled" = true;
-		"browser.contentblocking.category" = "strict";
-
 		# Sanitize
 		"privacy.clearOnShutdown.cache" = true;
 		"privacy.clearOnShutdown_v2.cache" = true;
@@ -205,14 +132,9 @@
 		"browser.download.folderList" = 2;
 		"layout.css.prefers-color-scheme.content-override" = 0;
 		"toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-		"extensions.activeThemeID" = "{22b0eca1-8c02-4c0d-a5d7-6604ddd9836e}";
 		"dom.popup_allowed_events" = "click dblclick mousedown pointerdown";
 		"browser.toolbars.bookmarks.visibility" = "never";
 		"browser.download.autohideButton" = false;
-		"browser.ml.chat.enabled" = true;
-		"browser.ml.chat.hideLocalhost" = false;	# For later.
-		"browser.ml.chat.provider" = "https://duck.ai";
-		"browser.ml.chat.shortcuts" = false;
 		#"keyword.enabled" = false;
 		"browser.startup.homepage_override.mstone" = "ignore";
 
