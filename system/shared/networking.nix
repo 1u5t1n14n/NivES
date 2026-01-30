@@ -15,6 +15,13 @@
 			enable = true;
 			wifi.scanRandMacAddress = true;
 		};
+
+		hosts = {
+			"192.168.178.185" = [
+				"cloud.is.internal"
+				"is.internal"
+			];
+		};
 	};
 
 	environment.persistence."/persist".directories = lib.mkIf config.networking.networkmanager.enable
