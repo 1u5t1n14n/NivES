@@ -7,7 +7,7 @@
 
 		systemPackages = with pkgs; [
 			zed-editor keepassxc wezterm anki-bin qemu quickemu xorg.xprop
-			greenfoot zotero alacritty
+			greenfoot zotero alacritty flying-carpet mupdf
 		]
 
 		++ lib.optionals config.nixpkgs.config.allowUnfree

@@ -45,8 +45,8 @@
 			fastfetch fzf figlet zip unzip wget yt-dlp btop
 			gh cmatrix browsh imagemagick superfile gnumake
 			pandoc typst gnupg lynx ffmpeg-full texliveFull
-			bitwarden-cli ocrmypdf cava zbar glow
-			inotify-tools flying-carpet
+			bitwarden-cli ocrmypdf cava zbar glow latexrun
+			inotify-tools
 		]
 
 		++ lib.optionals host.desktop
