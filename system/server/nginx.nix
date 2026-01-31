@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
 
@@ -17,7 +17,7 @@
 			|| config.services.ntfy-sh.enable
 			|| config.services.immich.enable
 			|| config.services.homepage-dashboard.enable
-		)
+		);
 	};
 
 }

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 
 {
 
@@ -9,7 +9,6 @@
 				enableACME = false;
 				locations."/" = {
 					proxyPass = "http://" + config.services.homepage-dashboard.allowedHosts;
-					proxyWebSockets = false;
 				};
 			};
 
