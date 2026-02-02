@@ -3,11 +3,22 @@
 {
 
 	services = {
+		nginx.virtualHosts."less.is.internal" = lib.mkIf config.services.paperless.enable
+			{
+				forceSSL = false;
+				enableACME = false;
+				locations."/" = {
+					proxyPass = "http://${config.services.paperless.address}:${toString config.services.paperless.port}";
+				};
+			};
+		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.paperless.enable
+			[ "192.168.178.185 less.is.internal" ];
+
 		paperless = {
-			address = "0.0.0.0";
+			address = "127.0.0.1";
 			port = 28981;
 
-			consumptionDir = "${config.services.paperless.dataDir}/Capitalism";
+			consumptionDir = "${config.services.paperless.dataDir}/consume";
 			consumptionDirIsPublic = true;
 			passwordFile = config.sops.secrets."services/paperless/root".path;
 
@@ -51,7 +62,8 @@
 	environment.persistence."/persist".directories = lib.mkIf config.services.paperless.enable
 		[ config.services.paperless.dataDir ];
 
-	networking.firewall.allowedTCPPorts = lib.mkIf (config.services.paperless.enable && (config.services.paperless.address == "0.0.0.0"))
+	networking.firewall.allowedTCPPorts = lib.mkIf (config.services.paperless.enable
+		&& (config.services.paperless.address == "0.0.0.0"))
 		[ config.services.paperless.port ];
 
 }

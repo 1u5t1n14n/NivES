@@ -141,7 +141,4 @@
 		};
 	};
 
-	networking.firewall.allowedTCPPorts = lib.mkIf config.services.nextcloud.enable
-		[ 80 443 ];
-
 }

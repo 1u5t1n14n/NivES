@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
 
@@ -19,5 +19,11 @@
 			|| config.services.homepage-dashboard.enable
 		);
 	};
+
+	networking.firewall.allowedTCPPorts = lib.mkIf config.services.nginx.enable
+		[ 80 443 ];
+
+	environment.persistence."/persist".directories = lib.mkIf config.services.postgresql.enable
+		[ config.services.postgresql.dataDir ];
 
 }

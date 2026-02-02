@@ -1,14 +1,25 @@
-{ ... }:
+{ lib, config, ... }:
 
 {
 
-	services.ntfy-sh = {
-		settings = {
-			base-url = "http://192.168.178.185:8088";
-			listen-http = "0.0.0.0:8088";
+	services = {
+		nginx.virtualHosts."ntfy.is.internal" = lib.mkIf config.services.ntfy-sh.enable
+			{
+				forceSSL = false;
+				enableACME = false;
+				locations."/" = {
+					proxyPass = "http://${config.services.ntfy-sh.settings.listen-http}";
+				};
+			};
+		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.ntfy-sh.enable
+			[ "192.168.178.185 ntfy.is.internal" ];
+
+		ntfy-sh = {
+			settings = {
+				base-url = "http://ntfy.is.internal";
+				listen-http = "127.0.0.1:8088";
+			};
 		};
 	};
-
-	networking.firewall.allowedTCPPorts = [ 8088 ];
 
 }

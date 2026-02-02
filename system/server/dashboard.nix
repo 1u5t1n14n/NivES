@@ -2,19 +2,25 @@
 
 {
 
+	systemd.tmpfiles.rules = [
+		  "d /var/lib/private 0700 root root"
+	];
+
 	services = {
-		nginx.virtualHosts."is.internal" = lib.mkIf (config.services.homepage-dashboard.enable)
+		nginx.virtualHosts."is.internal" = lib.mkIf config.services.homepage-dashboard.enable
 			{
 				forceSSL = false;
 				enableACME = false;
 				locations."/" = {
-					proxyPass = "http://" + config.services.homepage-dashboard.allowedHosts;
+					proxyPass = "http://127.0.0.1:" + toString config.services.homepage-dashboard.listenPort;
 				};
 			};
+		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.homepage-dashboard.enable
+			[ "192.168.178.185 is.internal" ];
 
 		homepage-dashboard = {
 			listenPort = 8082;
-			allowedHosts = "127.0.0.1:" + (toString config.services.homepage-dashboard.listenPort);
+			allowedHosts = "127.0.0.1:${toString config.services.homepage-dashboard.listenPort},is.internal";
 
 			widgets = [
 				{
@@ -36,67 +42,83 @@
 								icon = "fritzbox.svg";
 							};
 						}
-						{
+					]
+
+					++ lib.optionals config.services.pihole-ftl.enable
+						[{
 							PiHole = {
 								href = "http://192.168.178.185:8080";
 								ping = "http://192.168.178.185:8080";
 								icon = "pi-hole.svg";
 							};
-						}
-					];
+						}];
 				}
 
 				{
-					Cloud = [
-						{
+					Cloud = [ ]
+
+					++ lib.optionals config.services.nextcloud.enable
+						[{
 							Nextcloud = {
-								href = "http://cloud.is.internal";
-								ping = "http://cloud.is.internal";
+								href = "http://" + config.nextcloud.hostName;
+								ping = "http://" + config.nextcloud.hostName;
 								icon = "nextcloud.svg";
 							};
-						}
-						{
+						}]
+
+					++ lib.optionals config.services.immich.enable
+						[{
 							Immich = {
-								href = "http://192.168.178.185:2283";
-								ping = "http://192.168.178.185:2283";
+								href = "http://album.is.internal";
+								ping = "http://${config.services.immich.host}:${config.services.immich.port}";
 								icon = "immich.svg";
 							};
-						}
-					];
+						}]
+
+					++ lib.optionals config.services.paperless.enable
+						[{
+							Paperless = {
+								href = "http://less.is.internal";
+								ping = "http://${config.services.paperless.address}:${config.services.paperless.port}";
+								icon = "paperless.svg";
+							};
+						}];
 				}
 
 				{
-					Sync = [
-						{
+					Sync = [ ]
+
+					++ lib.optionals config.services.ntfy-sh.enable
+						[{
 							"ntfy.sh" = {
-								href = "http://192.168.178.185:8088";
-								ping = "http://192.168.178.185:8088";
+								href = "http://ntfy.is.internal";
+								ping = "http://${config.services.ntfy-sh.settings.listen-http}";
 								icon = "ntfy.svg";
 							};
-						}
-						{
+						}]
+
+					++ lib.optionals config.services.anki-sync-server.enable
+						[{
 							Anki = {
-								href = "http://192.168.178.185:27701";
-								ping = "http://192.168.178.185:27701";
+								href = "http://anki.is.internal";
+								ping = "http://${config.services.anki-sync-server.address}:${config.services.anki-sync-server.port}";
 							};
-						}
-					];
+						}];
 				}
 
 				{
-					Miscellaneous = [
-						{
+					Miscellaneous = [ ]
+
+					++ lib.optionals config.services.gitea.enable
+						[{
 							Gitea = {
-								href = "http://192.168.178.185:8880";
-								ping = "http://192.168.178.185:8880";
+								href = "http://git.is.internal";
+								ping = "http://${config.services.gitea.settings.server.HTTP_ADDR}:${config.services.gitea.settings.server.HTTP_PORT}";
 								icon = "gitea.svg";
 							};
-						}
-					];
+						}];
 				}
 			];
-
-			openFirewall = false;
 		};
 	};
 
