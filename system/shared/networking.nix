@@ -19,6 +19,11 @@
 		hosts = {
 			"192.168.178.185" = [
 				"cloud.is.internal"
+				"less.is.internal"
+				"anki.is.internal"
+				"ntfy.is.internal"
+				"album.is.internal"
+				"git.is.internal"
 				"is.internal"
 			];
 		};
