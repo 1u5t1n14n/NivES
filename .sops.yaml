@@ -1,9 +1,11 @@
 keys:
   - &atlas age1rrz6wef7gfymhnp30d46w2mfaldsztusklcezaj7g65qxxmqyyzqtt4ugc
   - &morpheus age1mhsrjvk37rvcmfuq06ccd2cl5wgevd2p0aftpncfv856jk0wcg7q9zz3nx
+  - &hypnos age1gf5hev99ux9e9lpc6pacmqasf64grmj0s05qq8p488sx862utveqgtcnsm
 creation_rules:
   - path_regex: keys.yaml$
     key_groups:
       - age:
         - *atlas
         - *morpheus
+        - *hypnos
