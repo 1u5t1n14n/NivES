@@ -60,8 +60,8 @@
 					++ lib.optionals config.services.nextcloud.enable
 						[{
 							Nextcloud = {
-								href = "http://" + config.nextcloud.hostName;
-								ping = "http://" + config.nextcloud.hostName;
+								href = "http://" + config.services.nextcloud.hostName;
+								ping = "http://" + config.services.nextcloud.hostName;
 								icon = "nextcloud.svg";
 							};
 						}]
@@ -70,7 +70,7 @@
 						[{
 							Immich = {
 								href = "http://album.is.internal";
-								ping = "http://${config.services.immich.host}:${config.services.immich.port}";
+								ping = "http://${config.services.immich.host}:${toString config.services.immich.port}";
 								icon = "immich.svg";
 							};
 						}]
@@ -79,7 +79,7 @@
 						[{
 							Paperless = {
 								href = "http://less.is.internal";
-								ping = "http://${config.services.paperless.address}:${config.services.paperless.port}";
+								ping = "http://${config.services.paperless.address}:${toString config.services.paperless.port}";
 								icon = "paperless.svg";
 							};
 						}];
@@ -101,7 +101,7 @@
 						[{
 							Anki = {
 								href = "http://anki.is.internal";
-								ping = "http://${config.services.anki-sync-server.address}:${config.services.anki-sync-server.port}";
+								ping = "http://${config.services.anki-sync-server.address}:${toString config.services.anki-sync-server.port}";
 							};
 						}];
 				}
@@ -113,7 +113,7 @@
 						[{
 							Gitea = {
 								href = "http://git.is.internal";
-								ping = "http://${config.services.gitea.settings.server.HTTP_ADDR}:${config.services.gitea.settings.server.HTTP_PORT}";
+								ping = "http://${config.services.gitea.settings.server.HTTP_ADDR}:${toString config.services.gitea.settings.server.HTTP_PORT}";
 								icon = "gitea.svg";
 							};
 						}];

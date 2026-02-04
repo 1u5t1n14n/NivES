@@ -11,7 +11,7 @@
 					proxyPass = "http://${config.services.immich.host}:${toString config.services.immich.port}";
 				};
 			};
-		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.album.enable
+		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.immich.enable
 			[ "192.168.178.185 album.is.internal" ];
 
 		immich = {
