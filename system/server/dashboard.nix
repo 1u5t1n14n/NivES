@@ -116,6 +116,24 @@
 								ping = "http://${config.services.gitea.settings.server.HTTP_ADDR}:${toString config.services.gitea.settings.server.HTTP_PORT}";
 								icon = "gitea.svg";
 							};
+						}]
+
+					++ lib.optionals config.services.gitlab.enable
+						[{
+							Gitlab = {
+								href = "http://code.is.internal";
+								ping = "http://code.is.internal";
+								icon = "gitlab.svg";
+							};
+						}]
+
+					++ lib.optionals config.services.gitea.enable
+						[{
+							Jellyfin = {
+								href = "http://media.is.internal";
+								ping = "http://127.0.0.1:8096";
+								icon = "jellyfin.svg";
+							};
 						}];
 				}
 			];

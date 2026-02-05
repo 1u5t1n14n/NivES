@@ -33,6 +33,8 @@
 		immich.enable = true;
 		pihole-ftl.enable = true;
 		homepage-dashboard.enable = true;
+		jellyfin.enable = true;
+		gitlab.enable = false;
 	};
 
 }
