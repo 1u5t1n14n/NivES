@@ -62,8 +62,7 @@ in
 					{
 						description = "Roll back to a blank filesystem";
 
-						# after = [ "cryptsetup.target" ];
-						after = [ "zfs.target" ];
+						after = [ "zfs-import.target" ];
 						wantedBy = [ "initrd.target" ];
 						before = [ "sysroot.mount" ];
 
