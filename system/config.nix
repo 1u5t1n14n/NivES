@@ -10,17 +10,28 @@
 	++ lib.optionals (!host.desktop)
 		[ ./server ];
 
-	# Home-Manager
 	environment.systemPackages = [ pkgs.home-manager ];
 
-	# Work-around for continued Systemd Service. Probably
-	# other way to prevent erroring out.
-	system.activationScripts.backupRemove = ''
+	boot.initrd.systemd.services.backupRemove = {
+		description = "Delete Home-Manager Backups";
+
+		after = [ "sysroot.mount" ];
+		before = [ "home-manager-${host.user}.service" ];
+		wantedBy = [ "multi-user.target" ];
+
+		unitConfig.DefaultDependencies = "no";
+		serviceConfig.Type = "oneshot";
+
+		path = [ pkgs.findutils ];
+		script = ''
+			echo "The following files will be deleted:"
+			find ${config.users.users.${host.user}.home} -type f -name "*.hmBackup"
+			find ${config.users.users.${host.user}.home} -type f -name "*.hmBackup" -delete
+		'';
+	};
+
+	system.userActivationScripts.backupRemove = ''
 		find ${config.users.users.${host.user}.home} -type f -name "*.hmBackup" -delete
 	'';
-
-	# Needed for Home-Manager Usage with Impermanence
-	# Probably easier to do, but who cares
-	system.userActivationScripts.backupRemove = config.system.activationScripts.backupRemove;
 
 }

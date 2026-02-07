@@ -25,6 +25,7 @@
 		validateSopsFiles = true;
 	};
 
+	# Not even working because /home is not mounted during activation.
 	system.activationScripts.ageKeys = ''
 		${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i /persist/etc/ssh/ssh_host_ed25519_key -o ${config.users.users.${host.user}.home}/.config/sops/age/keys.txt
 	'';
