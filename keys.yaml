@@ -9,6 +9,7 @@ services:
         root: ENC[AES256_GCM,data:/nr8xzPRUMD9dKvkIuloSA==,iv:rsugbtBl4+ZXFq+/9bpfdtILf9zok28sCpO/F1bh1RI=,tag:v7M4BQ2XwYDjJxc0iSzVag==,type:str]
     nextcloud:
         root: ENC[AES256_GCM,data:nXrsufNYws9X5MK6,iv:8xTmlZBe68dED70QVZkRGCqa9iFt7ID1CKLj1fdkoGU=,tag:hwG2BRd5Gkc/5OR7kKaR+A==,type:str]
+    rss: ENC[AES256_GCM,data:0G2NddcKqEqfobnZve6ehQ+FpaZD,iv:5/N1tO5fzvtAZdAk6dyQQcsoLHAjUZzGxjJDIk25A/0=,tag:9PabsHz5ohHT53RouW4G7Q==,type:str]
     gitlab:
         root: ENC[AES256_GCM,data:yiZ+tV2ChceLpDy8urB7DbdUdqg=,iv:hLWMi9xvudfym4GN/FG5h7bGLnQXgKswxD5FAnyheVk=,tag:vXUVIon65PmPWvNr2sNSUw==,type:str]
         db: ENC[AES256_GCM,data:S+PJW4nNJk2Txr3EjBGfw7lxaA==,iv:ESZWBYoNIl8E9s7Dxs9f+j/dar++QJ5G8Y9Uj55BRLU=,tag:eiVUzdXNSz54clC9L1Im2g==,type:str]
@@ -45,7 +46,7 @@ sops:
             ekFPWS80NnM3b1MremllWVpXd0R1Y0UKZ1vJHNOMOBXSneHaYEZ440P2+xp+HSL9
             QcA0rLl15gu55jp2UYa0hMOjX0jzu3yuWBLA92NATZKIyV7YSptyUg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2026-02-05T14:04:45Z"
-    mac: ENC[AES256_GCM,data:OlBuu8MXjsRZFBVZV9/fCmeFSSklX5SvwbMCDDZpbxl0QrhZqm/RlIp90MRLkaSYv3W/kKN1Wpf/zGT94J7mSXkaf6AetBUoK+rEBXA+pz0Lpmsf4TkaOzqBcKe7NlHqPvy4jCY48AcTCEEHkKD2ar91czFrXuT0g86o9WLSJJ0=,iv:0hkLLhqeGEIm3o+JH3o1DUlzTM/IBmvoWmEGy8Hin1I=,tag:lijhMV++Rv4sCQTJos2Jvw==,type:str]
+    lastmodified: "2026-02-10T11:27:26Z"
+    mac: ENC[AES256_GCM,data:SOaRTardkc2ZwigsC0jKMoI2/QNxgvrsKtfmT6ODZIH1NR8gW8ILeNXGHVQ/nI4rkWy+B3OCc1072PCShgr4Z3p/5xkfUaGp8FQ9j+ERp7i53lyruEpfAOnGpcXaJ6qtYm2Qi1CT7WXptBW2/lvkM+qIClN+0uORFuPZYKQetqM=,iv:Gc6NUaUpAfflYs+o/RMm5YW5I1EGVniF+4rxIQISaH8=,tag:hhPbJc++Tbc73i7bgmn3BA==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.11.0

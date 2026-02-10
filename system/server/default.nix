@@ -3,6 +3,7 @@
 {
 
 	imports = [
+		./rss.nix
 		./jellyfin.nix
 		./ankiSyncServer.nix
 		./dashboard.nix
