@@ -8,9 +8,10 @@
 		++ lib.optionals config.nixpkgs.config.allowUnfree
 			[ "displaylink" ];
 
-		displayManager.sessionCommands = ''
-			${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
-		'';
+		displayManager.sessionCommands = lib.mkIf config.services.desktopManager.gnome.enable
+			''
+				${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
+			'';
 	};
 
 	environment.systemPackages = [ pkgs.xorg.xrandr ]
