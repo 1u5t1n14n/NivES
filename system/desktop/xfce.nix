@@ -3,9 +3,10 @@
 {
 
 	services.xserver = {
-		enable = true;
+		enable = config.services.xserver.desktopManager.xfce.enable;
 
-		desktopManager.xfce.enable = true;
+		# To be enabled later
+		desktopManager.xfce.enable = false;
 	};
 
 	environment.xfce.excludePackages = with pkgs.xfce; [
