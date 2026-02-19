@@ -5,16 +5,22 @@
 	programs.firefox.profiles.default.search = {
 		default = "ddg";
 		engines = {
-			ddg = {
-				name = "Quacksy Duck";
-				urls = lib.mkForce [{ template = "https://noai.duckduckgo.com/?q={searchTerms}"; }];
-				iconMapObj."16" = lib.mkForce "https://duckduckgo.com/favicon.ico";
+			ddg = lib.mkForce {
+				name = "DuckDuckGo";
+				urls = [{ template = "https://noai.duckduckgo.com/?q={searchTerms}"; }];
+				iconMapObj."16" = "https://duckduckgo.com/favicon.ico";
 			};
 			wiki = {
 				name = "Wikipedia Enzyklopädie";
 				urls = [{ template = "https://de.wikipedia.org/wiki/Spezial:Suche?search={searchTerms}&go=Artikel-Suche"; }];
 				iconMapObj."16" = "https://de.wikipedia.org/favicon.ico";
 				definedAliases = [ "@w" ];
+			};
+			disroot = {
+				name = "SearXNG";
+				urls = [{ template = "https://search.disroot.org/search?q={searchTerms}"; }];
+				iconMapObj."16" = "https://search.disroot.org/static/themes/simple/img/favicon.png";
+				definedAliases = [ "@sx" ];
 			};
 			nueschtOS = {
 				name = "NüschtOS Sucheingabe";
@@ -62,8 +68,6 @@
 			bing.metaData.hidden = true;
 			g.metaData.hidden = true;
 			google.metaData.hidden = true;
-
-			ddg.metaData.alias = "@d";
 		};
 	};
 
