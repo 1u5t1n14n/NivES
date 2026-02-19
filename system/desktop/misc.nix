@@ -6,7 +6,7 @@
 		sessionVariables.ANKI_WAYLAND = "1";
 
 		systemPackages = with pkgs; [
-			zed-editor keepassxc wezterm anki-bin qemu quickemu xorg.xprop
+			zed-editor keepassxc wezterm anki-bin qemu quickemu xprop
 			greenfoot zotero alacritty flying-carpet mupdf
 		]
 
