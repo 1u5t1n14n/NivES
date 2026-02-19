@@ -20,6 +20,8 @@
 			];
 		};
 
+		"ca/andyholmes/valent/contacts/plugin/eds".enabled = false;
+
 		"org/gnome/shell/extensions/rounded-window-corners-reborn".blacklist = [
 			"Bitwarden"
 		];
