@@ -9,6 +9,7 @@
 				enableACME = false;
 				locations."/" = {
 					proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
+					proxyWebsockets = true;
 				};
 			};
 		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.gitlab.enable

@@ -9,6 +9,7 @@
 				enableACME = false;
 				locations."/" = {
 					proxyPass = "http://${config.services.anki-sync-server.address}:${toString config.services.anki-sync-server.port}";
+					proxyWebsockets = true;
 				};
 			};
 		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.anki-sync-server.enable

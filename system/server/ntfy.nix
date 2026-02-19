@@ -9,6 +9,7 @@
 				enableACME = false;
 				locations."/" = {
 					proxyPass = "http://${config.services.ntfy-sh.settings.listen-http}";
+					proxyWebsockets = true;
 				};
 			};
 		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.ntfy-sh.enable

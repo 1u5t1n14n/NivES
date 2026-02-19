@@ -9,6 +9,7 @@
 				enableACME = false;
 				locations."/" = {
 					proxyPass = "http://${config.services.paperless.address}:${toString config.services.paperless.port}";
+					proxyWebsockets = true;
 				};
 			};
 		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.paperless.enable

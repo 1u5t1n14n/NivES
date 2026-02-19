@@ -9,6 +9,7 @@
 				enableACME = false;
 				locations."/" = {
 					proxyPass = "http://${config.services.immich.host}:${toString config.services.immich.port}";
+					proxyWebsockets = true;
 				};
 			};
 		pihole-ftl.settings.dns.hosts = lib.mkIf config.services.immich.enable
