@@ -17,6 +17,7 @@
 		./printing.nix
 		./sound.nix
 		./texts.nix
+		./xfce.nix
 		./windowManager.nix
 	];
 

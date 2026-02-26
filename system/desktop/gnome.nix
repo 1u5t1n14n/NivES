@@ -15,13 +15,13 @@ in
 	security.pam.services.login.enableGnomeKeyring = cfg.enable;
 
 	services = {
-		desktopManager.gnome.enable = true;
+		desktopManager.gnome.enable = lib.mkDefault true;
 		displayManager = {
 			autoLogin = {
 				enable = false;
 				user = host.user;
 			};
-			gdm.enable = true;
+			gdm.enable = cfg.enable;
 		};
 
 		gnome = {

@@ -14,6 +14,7 @@
 		./waybar.nix
 		./wezterm.nix
 		./xdg.nix
+		./xfce
 		./zed.nix
 	];
 
